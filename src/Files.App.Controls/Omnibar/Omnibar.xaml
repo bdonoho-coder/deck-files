@@ -1,4 +1,4 @@
-<!--  Copyright (c) Files Community. Licensed under the MIT License.  -->
+﻿<!--  Copyright (c) Files Community. Licensed under the MIT License.  -->
 <ResourceDictionary
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -16,8 +16,15 @@
 	<Thickness x:Key="OmnibarBorderMarginUnfocused">-1</Thickness>
 	<Thickness x:Key="OmnibarModeSeparatorPadding">4,0,4,0</Thickness>
 
-	<CornerRadius x:Key="OmnibarDefaultCornerRadius">19</CornerRadius>
-	<CornerRadius x:Key="OmnibarModeDefaultCornerRadius">17</CornerRadius>
+	<CornerRadius x:Key="OmnibarDefaultCornerRadius">0</CornerRadius>
+	<CornerRadius x:Key="OmnibarModeDefaultCornerRadius">0</CornerRadius>
+
+	<!--  HUD outline follows the Windows accent color  -->
+	<SolidColorBrush
+		x:Key="OmnibarHudBorderBrush"
+		Opacity="0.6"
+		Color="{ThemeResource SystemAccentColor}" />
+	<SolidColorBrush x:Key="OmnibarHudBorderBrushPointerOver" Color="{ThemeResource SystemAccentColor}" />
 
 	<Style BasedOn="{StaticResource DefaultOmnibarStyle}" TargetType="local:Omnibar" />
 	<Style BasedOn="{StaticResource DefaultOmnibarModeStyle}" TargetType="local:OmnibarMode" />
@@ -27,7 +34,7 @@
 
 		<Setter Property="Background" Value="{ThemeResource ControlFillColorDefaultBrush}" />
 		<Setter Property="BackgroundSizing" Value="InnerBorderEdge" />
-		<Setter Property="BorderBrush" Value="{ThemeResource CircleElevationBorderBrush}" />
+		<Setter Property="BorderBrush" Value="{ThemeResource OmnibarHudBorderBrush}" />
 		<Setter Property="BorderThickness" Value="{StaticResource OmnibarBorderThicknessUnfocused}" />
 		<Setter Property="CornerRadius" Value="{StaticResource OmnibarDefaultCornerRadius}" />
 
@@ -407,7 +414,7 @@
 										<Setter Target="PlaceholderTextContentPresenter.Foreground" Value="{ThemeResource TextControlPlaceholderForegroundPointerOver}" />
 										<Setter Target="HeaderContentPresenter.Foreground" Value="{ThemeResource TextControlHeaderForegroundDisabled}" />
 										<Setter Target="BorderElement.Background" Value="{ThemeResource TextControlBackgroundPointerOver}" />
-										<Setter Target="BorderElement.BorderBrush" Value="{ThemeResource CircleElevationBorderBrush}" />
+										<Setter Target="BorderElement.BorderBrush" Value="{ThemeResource OmnibarHudBorderBrushPointerOver}" />
 										<Setter Target="ContentElement.Foreground" Value="{ThemeResource TextControlForegroundPointerOver}" />
 									</VisualState.Setters>
 								</VisualState>

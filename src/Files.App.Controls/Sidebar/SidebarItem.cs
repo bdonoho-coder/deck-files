@@ -476,6 +476,9 @@ namespace Files.App.Controls
 
 		private void UpdateExpansionState()
 		{
+			var count = Item?.Children is IList children ? children.Count : 0;
+			HudLabel = IsGroupHeader ? $"{Text?.ToUpperInvariant()}  //  {count:00}" : null;
+
 			if (Owner?.SupportsExpansion == false)
 			{
 				VisualStateManager.GoToState(this, "NoExpansion", false);

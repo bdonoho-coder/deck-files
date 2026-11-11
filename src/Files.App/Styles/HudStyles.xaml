@@ -1,0 +1,110 @@
+﻿<!--  HUD look shared by the Home page cards. Colors follow the Windows accent color, which the theme picker sets.  -->
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+	<SolidColorBrush x:Key="HudCardAccentBrush" Color="{ThemeResource SystemAccentColor}" />
+	<SolidColorBrush
+		x:Key="HudCardBorderBrush"
+		Opacity="0.35"
+		Color="{ThemeResource SystemAccentColor}" />
+	<SolidColorBrush
+		x:Key="HudCardHoverBrush"
+		Opacity="0.12"
+		Color="{ThemeResource SystemAccentColor}" />
+	<SolidColorBrush
+		x:Key="HudCardPressedBrush"
+		Opacity="0.22"
+		Color="{ThemeResource SystemAccentColor}" />
+
+	<!--  Square panel, thin accent outline, accent corner brackets  -->
+	<Style x:Key="HudCardButtonStyle" TargetType="Button">
+		<Setter Property="Background" Value="{ThemeResource ControlFillColorDefaultBrush}" />
+		<Setter Property="Foreground" Value="{ThemeResource ButtonForeground}" />
+		<Setter Property="BorderBrush" Value="{ThemeResource HudCardBorderBrush}" />
+		<Setter Property="BorderThickness" Value="1" />
+		<Setter Property="CornerRadius" Value="0" />
+		<Setter Property="FontFamily" Value="{ThemeResource ContentControlThemeFontFamily}" />
+		<Setter Property="UseSystemFocusVisuals" Value="{StaticResource UseSystemFocusVisuals}" />
+		<Setter Property="FocusVisualMargin" Value="-3" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="Button">
+					<Grid x:Name="RootGrid" Background="{TemplateBinding Background}">
+						<Border
+							x:Name="HoverFill"
+							Background="Transparent"
+							BorderBrush="{TemplateBinding BorderBrush}"
+							BorderThickness="{TemplateBinding BorderThickness}" />
+
+						<Path
+							Width="8"
+							Height="8"
+							HorizontalAlignment="Left"
+							VerticalAlignment="Top"
+							Data="M0,8 L0,0 L8,0"
+							Stroke="{ThemeResource HudCardAccentBrush}"
+							StrokeThickness="2" />
+						<Path
+							Width="8"
+							Height="8"
+							HorizontalAlignment="Right"
+							VerticalAlignment="Top"
+							Data="M0,0 L8,0 L8,8"
+							Stroke="{ThemeResource HudCardAccentBrush}"
+							StrokeThickness="2" />
+						<Path
+							Width="8"
+							Height="8"
+							HorizontalAlignment="Left"
+							VerticalAlignment="Bottom"
+							Data="M0,0 L0,8 L8,8"
+							Stroke="{ThemeResource HudCardAccentBrush}"
+							StrokeThickness="2" />
+						<Path
+							Width="8"
+							Height="8"
+							HorizontalAlignment="Right"
+							VerticalAlignment="Bottom"
+							Data="M8,0 L8,8 L0,8"
+							Stroke="{ThemeResource HudCardAccentBrush}"
+							StrokeThickness="2" />
+
+						<ContentPresenter
+							x:Name="ContentPresenter"
+							Padding="{TemplateBinding Padding}"
+							HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+							VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+							AutomationProperties.AccessibilityView="Raw"
+							Content="{TemplateBinding Content}"
+							ContentTemplate="{TemplateBinding ContentTemplate}"
+							ContentTransitions="{TemplateBinding ContentTransitions}"
+							Foreground="{TemplateBinding Foreground}" />
+
+						<VisualStateManager.VisualStateGroups>
+							<VisualStateGroup x:Name="CommonStates">
+								<VisualState x:Name="Normal" />
+								<VisualState x:Name="PointerOver">
+									<VisualState.Setters>
+										<Setter Target="HoverFill.Background" Value="{ThemeResource HudCardHoverBrush}" />
+										<Setter Target="HoverFill.BorderBrush" Value="{ThemeResource HudCardAccentBrush}" />
+									</VisualState.Setters>
+								</VisualState>
+								<VisualState x:Name="Pressed">
+									<VisualState.Setters>
+										<Setter Target="HoverFill.Background" Value="{ThemeResource HudCardPressedBrush}" />
+										<Setter Target="HoverFill.BorderBrush" Value="{ThemeResource HudCardAccentBrush}" />
+									</VisualState.Setters>
+								</VisualState>
+								<VisualState x:Name="Disabled">
+									<VisualState.Setters>
+										<Setter Target="ContentPresenter.Opacity" Value="0.5" />
+									</VisualState.Setters>
+								</VisualState>
+							</VisualStateGroup>
+						</VisualStateManager.VisualStateGroups>
+					</Grid>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+
+</ResourceDictionary>

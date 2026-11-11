@@ -134,6 +134,10 @@ namespace Files.App.Controls
 		[GeneratedDependencyProperty]
 		public partial object? ToolTip { get; set; }
 
+		/// <summary>Section header label in HUD style, e.g. "PINNED  //  07".</summary>
+		[GeneratedDependencyProperty]
+		public partial string? HudLabel { get; set; }
+
 		public static void OnPropertyChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
 		{
 			if (sender is not SidebarItem item) return;

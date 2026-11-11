@@ -1,4 +1,4 @@
-<!--  Copyright (c) Files Community. Licensed under the MIT License.  -->
+﻿<!--  Copyright (c) Files Community. Licensed under the MIT License.  -->
 <UserControl
 	x:Class="Files.App.UserControls.Widgets.DrivesWidget"
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -33,7 +33,7 @@
 						VerticalContentAlignment="Stretch"
 						AutomationProperties.Name="{x:Bind Item.Text, Mode=OneWay}"
 						Click="Button_Click"
-						CornerRadius="{StaticResource ControlCornerRadius}"
+						Style="{StaticResource HudCardButtonStyle}"
 						DataContext="{x:Bind}"
 						PointerPressed="Button_PointerPressed"
 						RightTapped="Button_RightTapped"
@@ -87,6 +87,8 @@
 								VerticalContentAlignment="Stretch"
 								x:Load="{x:Bind Item.ShowDriveDetails, Mode=OneWay}"
 								AutomationProperties.AccessibilityView="Raw"
+								CornerRadius="0"
+								Foreground="{ThemeResource HudCardAccentBrush}"
 								Maximum="{x:Bind Item.MaxSpace.GigaBytes, Mode=OneWay}"
 								Value="{x:Bind Item.SpaceUsed.GigaBytes, Mode=OneWay}" />
 

@@ -1,4 +1,4 @@
-<!--  Copyright (c) Files Community. Licensed under the MIT License.  -->
+﻿<!--  Copyright (c) Files Community. Licensed under the MIT License.  -->
 <Application
 	x:Class="Files.App.App"
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -115,6 +115,7 @@
 				<ResourceDictionary Source="ms-appx:///Styles/TextBlockStyles.xaml" />
 				<ResourceDictionary Source="ms-appx:///Styles/MenuFlyoutSubItemWithImageStyle.xaml" />
 				<ResourceDictionary Source="ms-appx:///Styles/MenuFlyoutSubItemWithThemedIconStyle.xaml" />
+				<ResourceDictionary Source="ms-appx:///Styles/HudStyles.xaml" />
 				<ResourceDictionary>
 					<ResourceDictionary.ThemeDictionaries>
 						<ResourceDictionary x:Key="Light">
