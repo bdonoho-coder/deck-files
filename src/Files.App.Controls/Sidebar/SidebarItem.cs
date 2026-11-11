@@ -474,10 +474,20 @@ namespace Files.App.Controls
 			}
 		}
 
+		private void ApplyPinGroup()
+		{
+			// Flyout copies (compact mode) and section headers get no group label.
+			var pin = IsGroupHeader || IsInFlyout || DisplayMode == SidebarDisplayMode.Compact ? null : SidebarPinGroups.Find(Item?.Path);
+			HudGroupLabel = pin is { IsFirst: true } ? $"{pin.Group}  //  {pin.Count:00}" : null;
+			HudDisplayText = pin?.DisplayName ?? Text;
+			VisualStateManager.GoToState(this, HudGroupLabel is null ? "NoPinGroupLabel" : "PinGroupLabel", false);
+		}
+
 		private void UpdateExpansionState()
 		{
 			var count = Item?.Children is IList children ? children.Count : 0;
 			HudLabel = IsGroupHeader ? $"{Text?.ToUpperInvariant()}  //  {count:00}" : null;
+			ApplyPinGroup();
 
 			if (Owner?.SupportsExpansion == false)
 			{

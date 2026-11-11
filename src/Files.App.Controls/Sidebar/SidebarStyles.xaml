@@ -73,6 +73,44 @@
 							RadiusY="4"
 							Visibility="Collapsed" />
 
+						<!--  HUD pin group label (from pin-groups.txt), above the first pin of a group  -->
+						<Grid
+							x:Name="PinGroupHeader"
+							Height="22"
+							Margin="10,4,8,0"
+							VerticalAlignment="Top"
+							IsHitTestVisible="False"
+							Visibility="Collapsed">
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="Auto" />
+								<ColumnDefinition Width="*" />
+							</Grid.ColumnDefinitions>
+							<Rectangle
+								Width="6"
+								Height="6"
+								Margin="0,0,8,0"
+								HorizontalAlignment="Left"
+								VerticalAlignment="Center"
+								Fill="{ThemeResource SidebarHudAccentBrush}" />
+							<TextBlock
+								Margin="14,0,0,0"
+								VerticalAlignment="Center"
+								CharacterSpacing="60"
+								FontFamily="{StaticResource SidebarHudFont}"
+								FontSize="11"
+								FontWeight="SemiBold"
+								Foreground="{ThemeResource SidebarHudAccentBrush}"
+								Opacity="0.85"
+								Text="{TemplateBinding HudGroupLabel}" />
+							<Rectangle
+								Grid.Column="1"
+								Height="1"
+								Margin="10,1,0,0"
+								VerticalAlignment="Center"
+								Fill="{ThemeResource SidebarHudAccentBrush}"
+								Opacity="0.25" />
+						</Grid>
+
 						<!--  Focusable Visual  -->
 						<Border
 							x:Name="ElementBorder"
@@ -173,7 +211,7 @@
 									FontFamily="{ThemeResource ContentControlThemeFontFamily}"
 									LineHeight="16"
 									Opacity="{TemplateBinding ContentOpacity}"
-									Text="{TemplateBinding Text}"
+									Text="{TemplateBinding HudDisplayText}"
 									TextTrimming="CharacterEllipsis"
 									TextWrapping="NoWrap" />
 
@@ -259,6 +297,16 @@
 						</Border>
 
 						<VisualStateManager.VisualStateGroups>
+
+							<VisualStateGroup x:Name="PinGroupLabelStates">
+								<VisualState x:Name="NoPinGroupLabel" />
+								<VisualState x:Name="PinGroupLabel">
+									<VisualState.Setters>
+										<Setter Target="PinGroupHeader.Visibility" Value="Visible" />
+										<Setter Target="ElementBorder.Margin" Value="0,26,0,0" />
+									</VisualState.Setters>
+								</VisualState>
+							</VisualStateGroup>
 
 							<VisualStateGroup x:Name="ExpansionStates">
 

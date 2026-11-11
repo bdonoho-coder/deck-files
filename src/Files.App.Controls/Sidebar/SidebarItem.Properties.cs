@@ -138,6 +138,16 @@ namespace Files.App.Controls
 		[GeneratedDependencyProperty]
 		public partial string? HudLabel { get; set; }
 
+		/// <summary>Pin group label shown above the first pin of a group, e.g. "GAMES  //  12" (see SidebarPinGroups).</summary>
+		[GeneratedDependencyProperty]
+		public partial string? HudGroupLabel { get; set; }
+
+		/// <summary>Shown name: the pin's display name from pin-groups.txt, else Text.</summary>
+		[GeneratedDependencyProperty]
+		public partial string? HudDisplayText { get; set; }
+
+		partial void OnTextChanged(string? newValue) => ApplyPinGroup();
+
 		public static void OnPropertyChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
 		{
 			if (sender is not SidebarItem item) return;
