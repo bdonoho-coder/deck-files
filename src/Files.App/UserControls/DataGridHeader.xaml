@@ -132,10 +132,12 @@
 					x:Name="HeaderTextBlock"
 					Grid.ColumnSpan="2"
 					HorizontalAlignment="{x:Bind HorizontalContentAlignment}"
+					CharacterSpacing="60"
+					FontFamily="{StaticResource HudFont}"
 					FontSize="12"
 					FontWeight="SemiBold"
-					Foreground="{ThemeResource TextFillColorTertiaryBrush}"
-					Text="{x:Bind Header, Mode=OneWay}"
+					Foreground="{ThemeResource HudCardAccentBrush}"
+					Text="{x:Bind Header.ToUpperInvariant(), Mode=OneWay}"
 					TextTrimming="CharacterEllipsis" />
 
 				<FontIcon

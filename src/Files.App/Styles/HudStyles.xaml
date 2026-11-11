@@ -16,6 +16,14 @@
 		Opacity="0.22"
 		Color="{ThemeResource SystemAccentColor}" />
 
+	<!--  Status bar code labels  -->
+	<Style x:Key="HudStatusTextStyle" TargetType="TextBlock">
+		<Setter Property="CharacterSpacing" Value="60" />
+		<Setter Property="FontFamily" Value="{StaticResource HudFont}" />
+		<Setter Property="FontSize" Value="12" />
+		<Setter Property="FontWeight" Value="SemiBold" />
+	</Style>
+
 	<!--  Square panel, thin accent outline, accent corner brackets  -->
 	<Style x:Key="HudCardButtonStyle" TargetType="Button">
 		<Setter Property="Background" Value="{ThemeResource ControlFillColorDefaultBrush}" />
