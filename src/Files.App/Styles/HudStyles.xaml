@@ -1,4 +1,4 @@
-﻿<!--  HUD look shared by the Home page cards. Colors follow the Windows accent color, which the theme picker sets.  -->
+﻿<!--  HUD look shared across the app (cards, toolbar, menus, corners). Colors follow the Windows accent color, which the theme picker sets.  -->
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
 	<FontFamily x:Key="HudFont">HUD Face, Bahnschrift, Segoe UI Variable Text</FontFamily>
@@ -15,6 +15,26 @@
 		x:Key="HudCardPressedBrush"
 		Opacity="0.22"
 		Color="{ThemeResource SystemAccentColor}" />
+
+	<!--  Square corners on every control and pop-up (WinUI reads these two keys)  -->
+	<CornerRadius x:Key="ControlCornerRadius">0</CornerRadius>
+	<CornerRadius x:Key="OverlayCornerRadius">0</CornerRadius>
+
+	<!--  Toolbar buttons: accent outline and tint on hover and press  -->
+	<StaticResource x:Key="AppBarButtonBackgroundPointerOver" ResourceKey="HudCardHoverBrush" />
+	<StaticResource x:Key="AppBarButtonBackgroundPressed" ResourceKey="HudCardPressedBrush" />
+	<StaticResource x:Key="AppBarButtonBackgroundSubMenuOpened" ResourceKey="HudCardPressedBrush" />
+	<StaticResource x:Key="AppBarButtonBorderBrushPointerOver" ResourceKey="HudCardAccentBrush" />
+	<StaticResource x:Key="AppBarButtonBorderBrushPressed" ResourceKey="HudCardAccentBrush" />
+	<StaticResource x:Key="AppBarButtonBorderBrushSubMenuOpened" ResourceKey="HudCardAccentBrush" />
+
+	<!--  Menus (right-click and toolbar drop-downs): accent outline, accent tint on the hovered item  -->
+	<StaticResource x:Key="MenuFlyoutPresenterBorderBrush" ResourceKey="HudCardAccentBrush" />
+	<StaticResource x:Key="MenuFlyoutItemBackgroundPointerOver" ResourceKey="HudCardHoverBrush" />
+	<StaticResource x:Key="MenuFlyoutItemBackgroundPressed" ResourceKey="HudCardPressedBrush" />
+	<StaticResource x:Key="MenuFlyoutSubItemBackgroundPointerOver" ResourceKey="HudCardHoverBrush" />
+	<StaticResource x:Key="MenuFlyoutSubItemBackgroundPressed" ResourceKey="HudCardPressedBrush" />
+	<StaticResource x:Key="MenuFlyoutSubItemBackgroundSubMenuOpened" ResourceKey="HudCardHoverBrush" />
 
 	<!--  Status bar code labels  -->
 	<Style x:Key="HudStatusTextStyle" TargetType="TextBlock">
