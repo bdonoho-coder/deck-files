@@ -24,6 +24,8 @@
 		<Thickness x:Key="ExpanderHeaderInnerMargin">16,0,16,0</Thickness>
 		<Thickness x:Key="ExpanderHeaderInnerPadding">0,0,12,0</Thickness>
 		<x:Double x:Key="ExpanderHeaderInnerHeight">32</x:Double>
+		<!--  Stretch the header so the HUD title's scale line gets the free width  -->
+		<HorizontalAlignment x:Key="ExpanderHeaderHorizontalContentAlignment">Stretch</HorizontalAlignment>
 
 		<Style x:Key="NoUpDownAnimationExpanderStyle" TargetType="Expander">
 			<Setter Property="IsTabStop" Value="False" />
@@ -199,7 +201,7 @@
 								Height="{StaticResource ExpanderHeaderInnerHeight}"
 								Margin="{StaticResource ExpanderHeaderInnerMargin}"
 								Padding="{StaticResource ExpanderHeaderInnerPadding}"
-								HorizontalAlignment="Left"
+								HorizontalAlignment="Stretch"
 								Background="{ThemeResource ExpanderChevronBackground}"
 								BorderBrush="{ThemeResource ExpanderChevronBorderBrush}"
 								BorderThickness="{ThemeResource ExpanderChevronBorderThickness}"
@@ -207,7 +209,7 @@
 								CornerRadius="{StaticResource ControlCornerRadius}">
 								<Grid.ColumnDefinitions>
 									<ColumnDefinition Width="Auto" />
-									<ColumnDefinition Width="Auto" />
+									<ColumnDefinition Width="*" />
 								</Grid.ColumnDefinitions>
 
 								<Grid.BackgroundTransition>
@@ -482,7 +484,7 @@
 									<Rectangle
 										Grid.Column="1"
 										Height="1"
-										Margin="10,1,0,0"
+										Margin="10,1,44,0"
 										VerticalAlignment="Center"
 										Fill="{ThemeResource HudCardAccentBrush}"
 										Opacity="0.4" />
