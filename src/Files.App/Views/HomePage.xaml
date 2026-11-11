@@ -463,12 +463,30 @@
 							AutomationProperties.Name="{x:Bind WidgetAutomationProperties, Mode=OneWay}"
 							IsExpanded="{x:Bind IsExpanded, Mode=TwoWay}">
 
+							<!--  HUD section title: caps label, // and a scale line  -->
 							<Expander.Header>
-								<TextBlock
-									FontWeight="SemiBold"
-									Foreground="{ThemeResource TextFillColorSecondaryBrush}"
-									Style="{StaticResource App.Theme.CaptionTextBlockStyle}"
-									Text="{x:Bind WidgetItemModel.WidgetHeader, Mode=OneWay}" />
+								<Grid>
+									<Grid.ColumnDefinitions>
+										<ColumnDefinition Width="Auto" />
+										<ColumnDefinition Width="*" />
+									</Grid.ColumnDefinitions>
+									<TextBlock
+										CharacterSpacing="60"
+										FontFamily="{StaticResource HudFont}"
+										FontSize="12"
+										FontWeight="SemiBold"
+										Foreground="{ThemeResource HudCardAccentBrush}">
+										<Run Text="{x:Bind WidgetItemModel.WidgetHeader.ToUpperInvariant(), Mode=OneWay}" />
+										<Run Text="  //" />
+									</TextBlock>
+									<Rectangle
+										Grid.Column="1"
+										Height="1"
+										Margin="10,1,0,0"
+										VerticalAlignment="Center"
+										Fill="{ThemeResource HudCardAccentBrush}"
+										Opacity="0.4" />
+								</Grid>
 							</Expander.Header>
 
 							<ContentControl
