@@ -1,0 +1,240 @@
+<!--  Copyright (c) Files Community. Licensed under the MIT License.  -->
+<UserControl
+	x:Class="Files.App.UserControls.TreeRail"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:controls="using:Files.App.Controls"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:local="using:Files.App.UserControls"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	mc:Ignorable="d">
+
+	<UserControl.Resources>
+		<!--  View key: square plate with the X code on top and the layout name under it; accent outline, text and corner marks while on  -->
+		<Style x:Key="TreeKeyStyle" TargetType="ToggleButton">
+			<Setter Property="Width" Value="56" />
+			<Setter Property="Height" Value="56" />
+			<Setter Property="Padding" Value="0" />
+			<Setter Property="Background" Value="{ThemeResource ControlFillColorDefaultBrush}" />
+			<Setter Property="Foreground" Value="{ThemeResource TextFillColorPrimaryBrush}" />
+			<Setter Property="BorderBrush" Value="{ThemeResource LookCardBorder}" />
+			<Setter Property="BorderThickness" Value="1" />
+			<Setter Property="CornerRadius" Value="0" />
+			<Setter Property="UseSystemFocusVisuals" Value="True" />
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="ToggleButton">
+						<Grid
+							x:Name="Root"
+							Background="{TemplateBinding Background}"
+							BorderBrush="{TemplateBinding BorderBrush}"
+							BorderThickness="{TemplateBinding BorderThickness}">
+							<Rectangle
+								x:Name="TopMark"
+								Width="5"
+								Height="5"
+								Margin="-1"
+								HorizontalAlignment="Left"
+								VerticalAlignment="Top"
+								Fill="{ThemeResource LookAccent}"
+								Visibility="Collapsed" />
+							<Rectangle
+								x:Name="BottomMark"
+								Width="5"
+								Height="5"
+								Margin="-1"
+								HorizontalAlignment="Right"
+								VerticalAlignment="Bottom"
+								Fill="{ThemeResource LookAccent}"
+								Visibility="Collapsed" />
+							<ContentPresenter
+								x:Name="KeyContent"
+								HorizontalAlignment="Center"
+								VerticalAlignment="Center"
+								Content="{TemplateBinding Content}"
+								Foreground="{TemplateBinding Foreground}" />
+
+							<VisualStateManager.VisualStateGroups>
+								<VisualStateGroup x:Name="CommonStates">
+									<VisualState x:Name="Normal" />
+									<VisualState x:Name="PointerOver">
+										<VisualState.Setters>
+											<Setter Target="Root.Background" Value="{ThemeResource LookCardHover}" />
+											<Setter Target="Root.BorderBrush" Value="{ThemeResource LookAccent}" />
+										</VisualState.Setters>
+									</VisualState>
+									<VisualState x:Name="Pressed">
+										<VisualState.Setters>
+											<Setter Target="Root.Background" Value="{ThemeResource LookCardPressed}" />
+											<Setter Target="Root.BorderBrush" Value="{ThemeResource LookAccent}" />
+										</VisualState.Setters>
+									</VisualState>
+									<VisualState x:Name="Disabled">
+										<VisualState.Setters>
+											<Setter Target="KeyContent.Opacity" Value="0.5" />
+										</VisualState.Setters>
+									</VisualState>
+									<VisualState x:Name="Checked">
+										<VisualState.Setters>
+											<Setter Target="Root.BorderBrush" Value="{ThemeResource LookAccent}" />
+											<Setter Target="KeyContent.Foreground" Value="{ThemeResource LookAccent}" />
+											<Setter Target="TopMark.Visibility" Value="Visible" />
+											<Setter Target="BottomMark.Visibility" Value="Visible" />
+										</VisualState.Setters>
+									</VisualState>
+									<VisualState x:Name="CheckedPointerOver">
+										<VisualState.Setters>
+											<Setter Target="Root.Background" Value="{ThemeResource LookCardHover}" />
+											<Setter Target="Root.BorderBrush" Value="{ThemeResource LookAccent}" />
+											<Setter Target="KeyContent.Foreground" Value="{ThemeResource LookAccent}" />
+											<Setter Target="TopMark.Visibility" Value="Visible" />
+											<Setter Target="BottomMark.Visibility" Value="Visible" />
+										</VisualState.Setters>
+									</VisualState>
+									<VisualState x:Name="CheckedPressed">
+										<VisualState.Setters>
+											<Setter Target="Root.Background" Value="{ThemeResource LookCardPressed}" />
+											<Setter Target="Root.BorderBrush" Value="{ThemeResource LookAccent}" />
+											<Setter Target="KeyContent.Foreground" Value="{ThemeResource LookAccent}" />
+											<Setter Target="TopMark.Visibility" Value="Visible" />
+											<Setter Target="BottomMark.Visibility" Value="Visible" />
+										</VisualState.Setters>
+									</VisualState>
+									<VisualState x:Name="CheckedDisabled">
+										<VisualState.Setters>
+											<Setter Target="KeyContent.Opacity" Value="0.5" />
+										</VisualState.Setters>
+									</VisualState>
+								</VisualStateGroup>
+							</VisualStateManager.VisualStateGroups>
+						</Grid>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+
+		<Style x:Key="KeyCodeStyle" TargetType="TextBlock">
+			<Setter Property="FontFamily" Value="{StaticResource LookFont}" />
+			<Setter Property="FontSize" Value="16" />
+			<Setter Property="FontWeight" Value="Bold" />
+			<Setter Property="HorizontalAlignment" Value="Center" />
+		</Style>
+		<Style x:Key="KeyNameStyle" TargetType="TextBlock">
+			<Setter Property="CharacterSpacing" Value="{StaticResource LookSpacing}" />
+			<Setter Property="FontFamily" Value="{StaticResource LookFont}" />
+			<Setter Property="FontSize" Value="8" />
+			<Setter Property="HorizontalAlignment" Value="Center" />
+			<Setter Property="Opacity" Value="0.8" />
+		</Style>
+		<Style x:Key="MeterLabelStyle" TargetType="TextBlock">
+			<Setter Property="CharacterSpacing" Value="{StaticResource LookSpacing}" />
+			<Setter Property="FontFamily" Value="{StaticResource LookFont}" />
+			<Setter Property="FontSize" Value="9" />
+			<Setter Property="Foreground" Value="{ThemeResource LookLabelForeground}" />
+		</Style>
+	</UserControl.Resources>
+
+	<!--  Right rail: X1-X4 view keys (layout + preview pane), fixed-drive meters, vertical version label  -->
+	<Grid
+		Width="72"
+		Padding="0,8,0,8"
+		BorderBrush="{ThemeResource LookDivider}"
+		BorderThickness="1,0,0,0">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="*" />
+			<RowDefinition Height="Auto" />
+		</Grid.RowDefinitions>
+
+		<StackPanel HorizontalAlignment="Center" Spacing="8">
+			<ToggleButton
+				IsChecked="{x:Bind Commands.LayoutDetails.IsOn, Mode=TwoWay}"
+				Style="{StaticResource TreeKeyStyle}"
+				ToolTipService.ToolTip="{x:Bind Commands.LayoutDetails.LabelWithHotKey, Mode=OneWay}">
+				<StackPanel Spacing="2">
+					<TextBlock Style="{StaticResource KeyCodeStyle}" Text="X1" />
+					<TextBlock Style="{StaticResource KeyNameStyle}" Text="{x:Bind controls:Look.Text(Commands.LayoutDetails.Label)}" />
+				</StackPanel>
+			</ToggleButton>
+			<ToggleButton
+				IsChecked="{x:Bind Commands.LayoutGrid.IsOn, Mode=TwoWay}"
+				Style="{StaticResource TreeKeyStyle}"
+				ToolTipService.ToolTip="{x:Bind Commands.LayoutGrid.LabelWithHotKey, Mode=OneWay}">
+				<StackPanel Spacing="2">
+					<TextBlock Style="{StaticResource KeyCodeStyle}" Text="X2" />
+					<TextBlock Style="{StaticResource KeyNameStyle}" Text="{x:Bind controls:Look.Text(Commands.LayoutGrid.Label)}" />
+				</StackPanel>
+			</ToggleButton>
+			<ToggleButton
+				IsChecked="{x:Bind Commands.LayoutColumns.IsOn, Mode=TwoWay}"
+				Style="{StaticResource TreeKeyStyle}"
+				ToolTipService.ToolTip="{x:Bind Commands.LayoutColumns.LabelWithHotKey, Mode=OneWay}">
+				<StackPanel Spacing="2">
+					<TextBlock Style="{StaticResource KeyCodeStyle}" Text="X3" />
+					<TextBlock Style="{StaticResource KeyNameStyle}" Text="{x:Bind controls:Look.Text(Commands.LayoutColumns.Label)}" />
+				</StackPanel>
+			</ToggleButton>
+			<ToggleButton
+				IsChecked="{x:Bind Commands.ToggleInfoPane.IsOn, Mode=TwoWay}"
+				Style="{StaticResource TreeKeyStyle}"
+				ToolTipService.ToolTip="{x:Bind Commands.ToggleInfoPane.LabelWithHotKey, Mode=OneWay}">
+				<StackPanel Spacing="2">
+					<TextBlock Style="{StaticResource KeyCodeStyle}" Text="X4" />
+					<TextBlock Style="{StaticResource KeyNameStyle}" Text="{x:Bind PreviewLabel}" />
+				</StackPanel>
+			</ToggleButton>
+
+			<Rectangle
+				Width="56"
+				Height="1"
+				Margin="0,6,0,2"
+				Opacity="0.5"
+				Stroke="{ThemeResource LookAccent}"
+				StrokeDashArray="1,2"
+				StrokeThickness="1" />
+
+			<ItemsControl ItemsSource="{x:Bind Meters}">
+				<ItemsControl.ItemsPanel>
+					<ItemsPanelTemplate>
+						<StackPanel Spacing="8" />
+					</ItemsPanelTemplate>
+				</ItemsControl.ItemsPanel>
+				<ItemsControl.ItemTemplate>
+					<DataTemplate x:DataType="local:RailMeter">
+						<StackPanel Width="56" Spacing="3">
+							<TextBlock Style="{StaticResource MeterLabelStyle}" Text="{x:Bind Label}" />
+							<Grid Height="6" Background="{ThemeResource LookCardHover}">
+								<Rectangle
+									Width="{x:Bind BarWidth}"
+									HorizontalAlignment="Left"
+									Fill="{ThemeResource LookAccent}" />
+							</Grid>
+						</StackPanel>
+					</DataTemplate>
+				</ItemsControl.ItemTemplate>
+			</ItemsControl>
+		</StackPanel>
+
+		<!--  Vertical label: a Canvas neither constrains nor clips, so the 140 px text can turn -90 degrees around the centre of a 16 x 140 slot  -->
+		<Canvas
+			Grid.Row="2"
+			Width="16"
+			Height="140"
+			HorizontalAlignment="Center">
+			<TextBlock
+				Canvas.Left="-62"
+				Canvas.Top="62"
+				Width="140"
+				Height="16"
+				RenderTransformOrigin="0.5,0.5"
+				Style="{StaticResource MeterLabelStyle}"
+				Text="{x:Bind Footer}"
+				TextAlignment="Center">
+				<TextBlock.RenderTransform>
+					<RotateTransform Angle="-90" />
+				</TextBlock.RenderTransform>
+			</TextBlock>
+		</Canvas>
+	</Grid>
+
+</UserControl>

@@ -188,6 +188,7 @@
 						<ColumnDefinition Width="Auto" />
 						<ColumnDefinition x:Name="InfoPaneColumnDefinition" Width="Auto" />
 						<ColumnDefinition x:Name="ShelfPaneColumn" Width="Auto" />
+						<ColumnDefinition x:Name="TreeRailColumn" Width="Auto" />
 					</Grid.ColumnDefinitions>
 
 					<!--  File Navigation Toolbar  -->
@@ -271,6 +272,15 @@
 						ClearCommand="{x:Bind ViewModel.ShelfViewModel.ClearItemsCommand}"
 						ItemFocusedCommand="{x:Bind Commands.ClearSelection}"
 						ItemsSource="{x:Bind ViewModel.ShelfViewModel.Items}" />
+
+					<!--  Node Tree look only: X1-X4 view keys + drive meters on a right rail  -->
+					<uc:TreeRail
+						x:Name="TreeRail"
+						Grid.Row="0"
+						Grid.RowSpan="5"
+						Grid.Column="4"
+						Margin="4,0,0,0"
+						x:Load="{x:Bind controls:Look.IsTree}" />
 				</Grid>
 			</controls:SidebarView.InnerContent>
 
