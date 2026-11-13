@@ -1,6 +1,8 @@
 // Copyright (c) Files Community. Licensed under the MIT License.
 
+using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
+using Files.App.UserControls.TabBar;
 using Windows.ApplicationModel;
 
 namespace Files.App.UserControls
@@ -26,6 +28,16 @@ namespace Files.App.UserControls
 		{
 			var code = new string((header ?? string.Empty).Where(char.IsLetterOrDigit).Take(3).ToArray()).ToUpperInvariant();
 			return code.Length > 0 ? code : "TAB";
+		}
+
+		public static string CloseName(string? header)
+			=> $"Close {header}";
+
+		// Same path as the x on a top tab: the main page detaches the content and the session list is saved.
+		private void CloseTab_Click(object sender, RoutedEventArgs e)
+		{
+			if ((sender as FrameworkElement)?.Tag is TabBarItem item)
+				Ioc.Default.GetRequiredService<MainPageViewModel>().MultitaskingControl?.CloseTab(item);
 		}
 
 		// -1 shows up while the tab list changes; the top strip's own handling keeps the index valid then.
