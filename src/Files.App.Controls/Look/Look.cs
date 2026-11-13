@@ -6,7 +6,7 @@ namespace Files.App.Controls
 {
 	/// <summary>
 	/// Which look this build draws. Read once at start from %USERPROFILE%\Themes\current.ini, which the theme picker writes:
-	/// a "look=" key wins ("hud", "minimal", "dossier"); otherwise themes named "hud-*" get the HUD look and every
+	/// a "look=" key wins ("hud", "minimal", "dossier", "tree"); otherwise themes named "hud-*" get the HUD look and every
 	/// other theme gets the minimal look. The picker restarts Files when the look changes.
 	/// </summary>
 	public static class Look
@@ -26,11 +26,15 @@ namespace Files.App.Controls
 
 		public static bool IsDossier => Name == "dossier";
 
+		/// <summary>Node Tree look: square node marks, dotted connectors, view keys on a right rail.</summary>
+		public static bool IsTree => Name == "tree";
+
 		/// <summary>Resource files merged for this look, in order (later files override earlier keys).</summary>
 		public static string[] Files => Name switch
 		{
 			"minimal" => ["MinimalLook"],
 			"dossier" => ["HudLook", "DossierLook"],
+			"tree" => ["HudLook", "TreeLook"],
 			_ => ["HudLook"],
 		};
 
@@ -57,7 +61,7 @@ namespace Files.App.Controls
 						theme = line[8..].Trim().ToLowerInvariant();
 				}
 
-				if (look is not ("hud" or "minimal" or "dossier"))
+				if (look is not ("hud" or "minimal" or "dossier" or "tree"))
 					look = theme is not null && theme.StartsWith("hud-") ? "hud" : "minimal";
 
 				return (look, theme ?? string.Empty);

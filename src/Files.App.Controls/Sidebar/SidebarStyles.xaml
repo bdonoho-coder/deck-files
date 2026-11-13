@@ -148,8 +148,29 @@
 									RadiusX="{StaticResource LookIndicatorRadius}"
 									RadiusY="{StaticResource LookIndicatorRadius}" />
 
-								<!--  Depth indent spacer (width = NestingLevel * 16)  -->
-								<Border Grid.Column="1" Width="{TemplateBinding IndentWidth}" />
+								<!--  Depth indent spacer (width = NestingLevel * 16). Node Tree look: dotted branch line down the indent plus a stub to the node.  -->
+								<Grid Grid.Column="1" Width="{TemplateBinding IndentWidth}">
+									<Rectangle
+										Width="1"
+										Margin="0,-4,8,-4"
+										HorizontalAlignment="Right"
+										VerticalAlignment="Stretch"
+										Opacity="0.5"
+										Stroke="{ThemeResource LookAccent}"
+										StrokeDashArray="1,2"
+										StrokeThickness="1"
+										Visibility="{TemplateBinding TreeLine}" />
+									<Rectangle
+										Width="8"
+										Height="1"
+										HorizontalAlignment="Right"
+										VerticalAlignment="Center"
+										Opacity="0.5"
+										Stroke="{ThemeResource LookAccent}"
+										StrokeDashArray="1,2"
+										StrokeThickness="1"
+										Visibility="{TemplateBinding TreeLine}" />
+								</Grid>
 
 								<!--  Own pointer surface so chevron clicks only toggle expansion (no row invoke / selection).  -->
 								<Border
@@ -159,25 +180,38 @@
 									VerticalAlignment="Stretch"
 									Background="Transparent"
 									Opacity="{TemplateBinding ContentOpacity}">
-									<!--  Chevron (rotates from right → down on expand).  -->
-									<FontIcon
-										x:Name="ExpandCollapseChevron"
-										Width="12"
-										Height="12"
-										HorizontalAlignment="Center"
-										VerticalAlignment="Center"
-										AutomationProperties.AccessibilityView="Raw"
-										FontFamily="{StaticResource SymbolThemeFontFamily}"
-										FontSize="10"
-										Foreground="{ThemeResource TextFillColorSecondaryBrush}"
-										Glyph="&#xE76C;"
-										IsTextScaleFactorEnabled="False"
-										RenderTransformOrigin="0.5,0.5"
-										Visibility="Collapsed">
-										<FontIcon.RenderTransform>
-											<RotateTransform x:Name="ExpandCollapseChevronRotateTransform" Angle="0" />
-										</FontIcon.RenderTransform>
-									</FontIcon>
+									<Grid>
+										<!--  Chevron (rotates from right → down on expand).  -->
+										<FontIcon
+											x:Name="ExpandCollapseChevron"
+											Width="12"
+											Height="12"
+											HorizontalAlignment="Center"
+											VerticalAlignment="Center"
+											AutomationProperties.AccessibilityView="Raw"
+											FontFamily="{StaticResource SymbolThemeFontFamily}"
+											FontSize="10"
+											Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+											Glyph="&#xE76C;"
+											IsTextScaleFactorEnabled="False"
+											RenderTransformOrigin="0.5,0.5"
+											Visibility="Collapsed">
+											<FontIcon.RenderTransform>
+												<RotateTransform x:Name="ExpandCollapseChevronRotateTransform" Angle="0" />
+											</FontIcon.RenderTransform>
+										</FontIcon>
+										<!--  Node Tree look: square node mark, filled while expanded  -->
+										<Rectangle
+											x:Name="NodeDot"
+											Width="7"
+											Height="7"
+											HorizontalAlignment="Center"
+											VerticalAlignment="Center"
+											Fill="Transparent"
+											Stroke="{ThemeResource LookAccent}"
+											StrokeThickness="1"
+											Visibility="{StaticResource LookNode}" />
+									</Grid>
 								</Border>
 
 								<!--  Icon  -->
@@ -320,7 +354,7 @@
 
 								<VisualState x:Name="Expanded">
 									<VisualState.Setters>
-										<Setter Target="ExpandCollapseChevron.Visibility" Value="Visible" />
+										<Setter Target="ExpandCollapseChevron.Visibility" Value="{StaticResource LookChevron}" />
 										<Setter Target="ItemNameTextBlock.Margin" Value="8,0,12,0" />
 										<Setter Target="ItemNameTextBlock.FontWeight" Value="SemiBold" />
 										<Setter Target="ItemNameTextBlock.Visibility" Value="{StaticResource LookHeaderName}" />
@@ -330,7 +364,7 @@
 
 								<VisualState x:Name="Collapsed">
 									<VisualState.Setters>
-										<Setter Target="ExpandCollapseChevron.Visibility" Value="Visible" />
+										<Setter Target="ExpandCollapseChevron.Visibility" Value="{StaticResource LookChevron}" />
 										<Setter Target="ItemNameTextBlock.Margin" Value="8,0,12,0" />
 										<Setter Target="ItemNameTextBlock.FontWeight" Value="SemiBold" />
 										<Setter Target="ItemNameTextBlock.Visibility" Value="{StaticResource LookHeaderName}" />
@@ -341,7 +375,7 @@
 								<!--  Tree-view folder rows: chevron toggle but keep regular item styling (icon visible, normal text). Children render in the outer flat list, not nested.  -->
 								<VisualState x:Name="LeafWithChildren">
 									<VisualState.Setters>
-										<Setter Target="ExpandCollapseChevron.Visibility" Value="Visible" />
+										<Setter Target="ExpandCollapseChevron.Visibility" Value="{StaticResource LookChevron}" />
 									</VisualState.Setters>
 								</VisualState>
 							</VisualStateGroup>
@@ -350,11 +384,13 @@
 								<VisualState x:Name="ExpandedIconNormal">
 									<VisualState.Setters>
 										<Setter Target="ExpandCollapseChevronRotateTransform.Angle" Value="90" />
+										<Setter Target="NodeDot.Fill" Value="{ThemeResource LookAccent}" />
 									</VisualState.Setters>
 								</VisualState>
 								<VisualState x:Name="ExpandedIconPressed">
 									<VisualState.Setters>
 										<Setter Target="ExpandCollapseChevronRotateTransform.Angle" Value="90" />
+										<Setter Target="NodeDot.Fill" Value="{ThemeResource LookAccent}" />
 									</VisualState.Setters>
 								</VisualState>
 								<VisualState x:Name="CollapsedIconNormal">
@@ -443,6 +479,7 @@
 										<Setter Target="ItemNameTextBlock.Visibility" Value="Collapsed" />
 										<Setter Target="ItemDecoratorPresenter.Width" Value="0" />
 										<Setter Target="ChevronColumnDefinition.Width" Value="0" />
+										<Setter Target="NodeDot.Visibility" Value="Collapsed" />
 										<Setter Target="IconPresenter.Margin" Value="8,0,0,0" />
 									</VisualState.Setters>
 								</VisualState>
@@ -454,6 +491,7 @@
 								<VisualState x:Name="OwnerDoesNotSupportExpansion">
 									<VisualState.Setters>
 										<Setter Target="ChevronColumnDefinition.Width" Value="0" />
+										<Setter Target="NodeDot.Visibility" Value="Collapsed" />
 										<Setter Target="IconPresenter.Margin" Value="8,0,0,0" />
 									</VisualState.Setters>
 								</VisualState>

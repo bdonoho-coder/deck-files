@@ -5,15 +5,23 @@
 		<ResourceDictionary x:Key="Default">
 			<StaticResource x:Key="LookCardFill" ResourceKey="CardBackgroundFillColorDefaultBrush" />
 			<StaticResource x:Key="LookCardStroke" ResourceKey="CardStrokeColorDefaultBrush" />
+			<StaticResource x:Key="LookCrumbForeground" ResourceKey="BreadcrumbBarForegroundBrush" />
 		</ResourceDictionary>
 		<ResourceDictionary x:Key="Light">
 			<StaticResource x:Key="LookCardFill" ResourceKey="CardBackgroundFillColorDefaultBrush" />
 			<StaticResource x:Key="LookCardStroke" ResourceKey="CardStrokeColorDefaultBrush" />
+			<StaticResource x:Key="LookCrumbForeground" ResourceKey="BreadcrumbBarForegroundBrush" />
 		</ResourceDictionary>
 	</ResourceDictionary.ThemeDictionaries>
 
 	<!--  Shared switches (MinimalLook.xaml defines the same keys)  -->
 	<FontFamily x:Key="LookFont">HUD Face, Bahnschrift, Segoe UI Variable Text</FontFamily>
+	<!--  Chevrons in the side panel and path bar; TreeLook.xaml swaps them for node squares  -->
+	<Visibility x:Key="LookChevron">Visible</Visibility>
+	<Visibility x:Key="LookNode">Collapsed</Visibility>
+	<x:String x:Key="LookCrumbGlyph">&#xE76C;</x:String>
+	<Visibility x:Key="LookTabNode">Collapsed</Visibility>
+	<Visibility x:Key="LookTabUnderline">Collapsed</Visibility>
 	<!--  Cards view: square plates; DossierLook.xaml adds the dark fill, accent stroke and tag notch  -->
 	<CornerRadius x:Key="LookCardRadius">0</CornerRadius>
 	<Visibility x:Key="LookNotch">Collapsed</Visibility>

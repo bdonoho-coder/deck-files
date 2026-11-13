@@ -1,0 +1,20 @@
+<!--  Node Tree look: the HUD look (merged first) with square node marks and dotted connector lines instead of chevrons and the cut tab, plus view keys and drive meters on a right rail (TreeRail).  -->
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+	<!--  Side panel and path bar: node squares (filled when expanded) instead of chevrons  -->
+	<Visibility x:Key="LookChevron">Collapsed</Visibility>
+	<Visibility x:Key="LookNode">Visible</Visibility>
+	<x:String x:Key="LookCrumbGlyph">&#xE739;</x:String>
+	<SolidColorBrush x:Key="LookCrumbForeground" Color="{ThemeResource SystemAccentColor}" />
+
+	<!--  Tabs: flat tab with a node square in front; accent name, icon and 2 px underline when selected  -->
+	<Visibility x:Key="LookHudTab">Collapsed</Visibility>
+	<GridLength x:Key="LookTabCutWidth">0</GridLength>
+	<StaticResource x:Key="LookSelectedTabPadding" ResourceKey="TabViewSelectedItemHeaderPadding" />
+	<Visibility x:Key="LookTabNode">Visible</Visibility>
+	<Visibility x:Key="LookTabUnderline">Visible</Visibility>
+	<SolidColorBrush x:Key="LookTabSelectedForeground" Color="{ThemeResource SystemAccentColor}" />
+	<SolidColorBrush x:Key="LookTabSelectedIconForeground" Color="{ThemeResource SystemAccentColor}" />
+	<SolidColorBrush x:Key="LookTabSelectedCloseForeground" Color="{ThemeResource SystemAccentColor}" />
+
+</ResourceDictionary>

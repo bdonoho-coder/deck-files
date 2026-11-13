@@ -91,6 +91,27 @@
 							BorderBrush="{ThemeResource TabViewBorderBrush}"
 							BorderThickness="1" />
 
+						<!--  Node Tree look: square node in front of the tab (filled when selected) and a 2 px accent underline on the selected tab  -->
+						<Rectangle
+							x:Name="TabNode"
+							Width="7"
+							Height="7"
+							Margin="8,0,0,0"
+							VerticalAlignment="Center"
+							Fill="Transparent"
+							IsHitTestVisible="False"
+							Stroke="{ThemeResource LookAccent}"
+							StrokeThickness="1"
+							Visibility="{StaticResource LookTabNode}" />
+						<Rectangle
+							x:Name="TabUnderline"
+							Grid.Column="1"
+							Height="2"
+							VerticalAlignment="Bottom"
+							Fill="{ThemeResource LookAccent}"
+							IsHitTestVisible="False"
+							Visibility="Collapsed" />
+
 						<Path
 							x:Name="LeftRadiusRenderArc"
 							Width="4"
@@ -258,6 +279,8 @@
 
 								<VisualState x:Name="Selected">
 									<VisualState.Setters>
+										<Setter Target="TabUnderline.Visibility" Value="{StaticResource LookTabUnderline}" />
+										<Setter Target="TabNode.Fill" Value="{ThemeResource LookAccent}" />
 										<Setter Target="BottomBorderLine.Visibility" Value="Collapsed" />
 										<Setter Target="HudTab.Visibility" Value="{StaticResource LookHudTab}" />
 										<Setter Target="RightRadiusRenderArc.Visibility" Value="{StaticResource LookRoundTab}" />
@@ -279,6 +302,8 @@
 
 								<VisualState x:Name="PointerOverSelected">
 									<VisualState.Setters>
+										<Setter Target="TabUnderline.Visibility" Value="{StaticResource LookTabUnderline}" />
+										<Setter Target="TabNode.Fill" Value="{ThemeResource LookAccent}" />
 										<Setter Target="BottomBorderLine.Visibility" Value="Collapsed" />
 										<Setter Target="HudTab.Visibility" Value="{StaticResource LookHudTab}" />
 										<Setter Target="RightRadiusRenderArc.Visibility" Value="{StaticResource LookRoundTab}" />
@@ -301,6 +326,8 @@
 
 								<VisualState x:Name="PressedSelected">
 									<VisualState.Setters>
+										<Setter Target="TabUnderline.Visibility" Value="{StaticResource LookTabUnderline}" />
+										<Setter Target="TabNode.Fill" Value="{ThemeResource LookAccent}" />
 										<Setter Target="BottomBorderLine.Visibility" Value="Collapsed" />
 										<Setter Target="HudTab.Visibility" Value="{StaticResource LookHudTab}" />
 										<Setter Target="RightRadiusRenderArc.Visibility" Value="{StaticResource LookRoundTab}" />

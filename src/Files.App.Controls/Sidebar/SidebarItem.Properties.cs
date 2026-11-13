@@ -55,10 +55,22 @@ namespace Files.App.Controls
 		public static readonly DependencyProperty IndentWidthProperty =
 			DependencyProperty.Register(nameof(IndentWidth), typeof(double), typeof(SidebarItem), new PropertyMetadata(0d));
 
+		/// <summary>Dotted branch line + stub in the indent of nested rows (Node Tree look only).</summary>
+		public Visibility TreeLine
+		{
+			get { return (Visibility)GetValue(TreeLineProperty); }
+			set { SetValue(TreeLineProperty, value); }
+		}
+		public static readonly DependencyProperty TreeLineProperty =
+			DependencyProperty.Register(nameof(TreeLine), typeof(Visibility), typeof(SidebarItem), new PropertyMetadata(Visibility.Collapsed));
+
 		private static void OnNestingLevelChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
 		{
 			if (d is SidebarItem item && e.NewValue is int level)
+			{
 				item.IndentWidth = level * 16d;
+				item.TreeLine = level > 0 && Look.IsTree ? Visibility.Visible : Visibility.Collapsed;
+			}
 		}
 
 		// Dims icon + text + chevron + decorator only; the selection indicator and pointer-over fill stay at full opacity so a selected hidden row still reads as selected.
