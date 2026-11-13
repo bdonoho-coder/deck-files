@@ -1,8 +1,22 @@
 ﻿<!--  HUD look: caps code labels, scale lines, corner brackets, angled tab, square corners. Colors follow the Windows accent color, which the theme picker sets.  -->
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
+	<ResourceDictionary.ThemeDictionaries>
+		<ResourceDictionary x:Key="Default">
+			<StaticResource x:Key="LookCardFill" ResourceKey="CardBackgroundFillColorDefaultBrush" />
+			<StaticResource x:Key="LookCardStroke" ResourceKey="CardStrokeColorDefaultBrush" />
+		</ResourceDictionary>
+		<ResourceDictionary x:Key="Light">
+			<StaticResource x:Key="LookCardFill" ResourceKey="CardBackgroundFillColorDefaultBrush" />
+			<StaticResource x:Key="LookCardStroke" ResourceKey="CardStrokeColorDefaultBrush" />
+		</ResourceDictionary>
+	</ResourceDictionary.ThemeDictionaries>
+
 	<!--  Shared switches (MinimalLook.xaml defines the same keys)  -->
 	<FontFamily x:Key="LookFont">HUD Face, Bahnschrift, Segoe UI Variable Text</FontFamily>
+	<!--  Cards view: square plates; DossierLook.xaml adds the dark fill, accent stroke and tag notch  -->
+	<CornerRadius x:Key="LookCardRadius">0</CornerRadius>
+	<Visibility x:Key="LookNotch">Collapsed</Visibility>
 	<x:Int32 x:Key="LookSpacing">60</x:Int32>
 	<Visibility x:Key="LookDecor">Visible</Visibility>
 	<Visibility x:Key="LookHeaderName">Collapsed</Visibility>
@@ -56,9 +70,22 @@
 	<CornerRadius x:Key="ControlCornerRadius">0</CornerRadius>
 	<CornerRadius x:Key="OverlayCornerRadius">0</CornerRadius>
 
-	<!--  HUD only: file list rows square, accent tint when selected  -->
+	<!--  HUD only: file list rows and grid tiles square, accent tint when selected  -->
 	<CornerRadius x:Key="ListViewItemCornerRadius">0</CornerRadius>
 	<CornerRadius x:Key="ListViewItemSelectionIndicatorCornerRadius">0</CornerRadius>
+	<CornerRadius x:Key="GridViewItemCornerRadius">0</CornerRadius>
+	<SolidColorBrush
+		x:Key="GridViewItemBackgroundSelected"
+		Opacity="0.18"
+		Color="{ThemeResource SystemAccentColor}" />
+	<SolidColorBrush
+		x:Key="GridViewItemBackgroundSelectedPointerOver"
+		Opacity="0.24"
+		Color="{ThemeResource SystemAccentColor}" />
+	<SolidColorBrush
+		x:Key="GridViewItemBackgroundSelectedPressed"
+		Opacity="0.30"
+		Color="{ThemeResource SystemAccentColor}" />
 	<SolidColorBrush
 		x:Key="ListViewItemBackgroundSelected"
 		Opacity="0.18"

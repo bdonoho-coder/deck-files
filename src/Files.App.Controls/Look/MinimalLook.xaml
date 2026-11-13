@@ -12,6 +12,8 @@
 			<StaticResource x:Key="LookOmnibarBorderPointerOver" ResourceKey="CircleElevationBorderBrush" />
 			<StaticResource x:Key="LookSidebarSelected" ResourceKey="ControlFillColorDefaultBrush" />
 			<StaticResource x:Key="LookSidebarSelectedBorder" ResourceKey="ButtonBorderBrush" />
+			<StaticResource x:Key="LookCardFill" ResourceKey="CardBackgroundFillColorDefaultBrush" />
+			<StaticResource x:Key="LookCardStroke" ResourceKey="CardStrokeColorDefaultBrush" />
 		</ResourceDictionary>
 		<ResourceDictionary x:Key="Light">
 			<StaticResource x:Key="LookLabelForeground" ResourceKey="TextFillColorSecondaryBrush" />
@@ -23,11 +25,15 @@
 			<StaticResource x:Key="LookOmnibarBorderPointerOver" ResourceKey="CircleElevationBorderBrush" />
 			<StaticResource x:Key="LookSidebarSelected" ResourceKey="ControlFillColorDefaultBrush" />
 			<StaticResource x:Key="LookSidebarSelectedBorder" ResourceKey="ButtonBorderBrush" />
+			<StaticResource x:Key="LookCardFill" ResourceKey="CardBackgroundFillColorDefaultBrush" />
+			<StaticResource x:Key="LookCardStroke" ResourceKey="CardStrokeColorDefaultBrush" />
 		</ResourceDictionary>
 	</ResourceDictionary.ThemeDictionaries>
 
 	<!--  Shared switches (HudLook.xaml defines the same keys)  -->
 	<FontFamily x:Key="LookFont">Segoe UI Variable Text</FontFamily>
+	<CornerRadius x:Key="LookCardRadius">8</CornerRadius>
+	<Visibility x:Key="LookNotch">Collapsed</Visibility>
 	<x:Int32 x:Key="LookSpacing">0</x:Int32>
 	<Visibility x:Key="LookDecor">Collapsed</Visibility>
 	<Visibility x:Key="LookHeaderName">Visible</Visibility>

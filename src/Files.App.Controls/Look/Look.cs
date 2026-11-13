@@ -6,8 +6,8 @@ namespace Files.App.Controls
 {
 	/// <summary>
 	/// Which look this build draws. Read once at start from %USERPROFILE%\Themes\current.ini, which the theme picker writes:
-	/// a "look=" key wins; otherwise themes named "hud-*" get the HUD look and every other theme gets the minimal look.
-	/// The picker restarts Files when a theme switch changes the look.
+	/// a "look=" key wins ("hud", "minimal", "dossier"); otherwise themes named "hud-*" get the HUD look and every
+	/// other theme gets the minimal look. The picker restarts Files when the look changes.
 	/// </summary>
 	public static class Look
 	{
@@ -21,7 +21,18 @@ namespace Files.App.Controls
 			(Name, ThemeName) = Read();
 		}
 
-		public static bool IsHud => Name == "hud";
+		/// <summary>Every look except minimal builds on the HUD look.</summary>
+		public static bool IsHud => Name != "minimal";
+
+		public static bool IsDossier => Name == "dossier";
+
+		/// <summary>Resource files merged for this look, in order (later files override earlier keys).</summary>
+		public static string[] Files => Name switch
+		{
+			"minimal" => ["MinimalLook"],
+			"dossier" => ["HudLook", "DossierLook"],
+			_ => ["HudLook"],
+		};
 
 		/// <summary>Caps in the HUD look, unchanged otherwise. For x:Bind.</summary>
 		public static string? Text(string? text)
@@ -46,7 +57,7 @@ namespace Files.App.Controls
 						theme = line[8..].Trim().ToLowerInvariant();
 				}
 
-				if (look is not ("hud" or "minimal"))
+				if (look is not ("hud" or "minimal" or "dossier"))
 					look = theme is not null && theme.StartsWith("hud-") ? "hud" : "minimal";
 
 				return (look, theme ?? string.Empty);

@@ -416,12 +416,22 @@
 					Padding="0"
 					HorizontalAlignment="Left"
 					VerticalAlignment="Stretch"
-					Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
-					BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+					Background="{ThemeResource LookCardFill}"
+					BorderBrush="{ThemeResource LookCardStroke}"
 					BorderThickness="1"
-					CornerRadius="8"
+					CornerRadius="{StaticResource LookCardRadius}"
 					IsRightTapEnabled="True"
 					Loaded="Grid_Loaded">
+					<!--  Dossier tag notch on the top edge (DossierLook only)  -->
+					<Rectangle
+						Width="26"
+						Height="4"
+						Margin="14,0,0,0"
+						HorizontalAlignment="Left"
+						VerticalAlignment="Top"
+						Canvas.ZIndex="2"
+						Fill="{ThemeResource LookAccent}"
+						Visibility="{StaticResource LookNotch}" />
 					<StackPanel Orientation="{Binding ElementName=PageRoot, Path=CardsViewOrientation, Mode=OneWay}">
 
 						<!--  Preview  -->
@@ -530,11 +540,13 @@
 									TextTrimming="CharacterEllipsis"
 									TextWrapping="Wrap" />
 
-								<!--  Item Type  -->
+								<!--  Item Type (code label in the HUD looks)  -->
 								<TextBlock
-									Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+									CharacterSpacing="{StaticResource LookSpacing}"
+									FontFamily="{StaticResource LookFont}"
+									Foreground="{ThemeResource LookLabelForeground}"
 									Style="{ThemeResource App.Theme.CaptionTextBlockStyle}"
-									Text="{x:Bind ItemType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+									Text="{x:Bind controls:Look.Text(ItemType), Mode=OneWay}"
 									TextTrimming="CharacterEllipsis"
 									TextWrapping="NoWrap" />
 
@@ -578,7 +590,8 @@
 
 								<!--  Contextual Property  -->
 								<TextBlock
-									Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+									FontFamily="{StaticResource LookFont}"
+									Foreground="{ThemeResource LookLabelForeground}"
 									Style="{ThemeResource CaptionTextBlockStyle}"
 									Text="{x:Bind ContextualProperty, Mode=OneWay}"
 									TextTrimming="CharacterEllipsis"
@@ -595,7 +608,8 @@
 
 								<!--  Item Size  -->
 								<TextBlock
-									Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+									FontFamily="{StaticResource LookFont}"
+									Foreground="{ThemeResource LookLabelForeground}"
 									Style="{ThemeResource CaptionTextBlockStyle}"
 									Text="{x:Bind FileSize, Mode=OneWay}"
 									TextTrimming="CharacterEllipsis"
