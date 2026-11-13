@@ -1,0 +1,62 @@
+<!--  Copyright (c) Files Community. Licensed under the MIT License.  -->
+<UserControl
+	x:Class="Files.App.Controls.PaneHeader"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	Height="30"
+	HorizontalAlignment="Stretch"
+	Visibility="{StaticResource LookPane}"
+	mc:Ignorable="d">
+
+	<!--  Console Deck pane header: accent cut tab with the pane title, a code label, and optional trailing content (e.g. a close button)  -->
+	<Grid BorderBrush="{ThemeResource LookDivider}" BorderThickness="0,0,0,1">
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="Auto" />
+			<ColumnDefinition Width="Auto" />
+			<ColumnDefinition Width="*" />
+			<ColumnDefinition Width="Auto" />
+		</Grid.ColumnDefinitions>
+
+		<Grid>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="*" />
+				<ColumnDefinition Width="14" />
+			</Grid.ColumnDefinitions>
+			<Rectangle Fill="{ThemeResource LookAccent}" />
+			<Path
+				Grid.Column="1"
+				Data="M0,0 L1,1 L0,1 Z"
+				Fill="{ThemeResource LookAccent}"
+				Stretch="Fill" />
+			<TextBlock
+				Margin="12,0,4,0"
+				VerticalAlignment="Center"
+				CharacterSpacing="{StaticResource LookSpacing}"
+				FontFamily="{StaticResource LookFont}"
+				FontSize="11"
+				FontWeight="Bold"
+				Foreground="{ThemeResource LookTabSelectedForeground}"
+				Text="{x:Bind Title, Mode=OneWay}" />
+		</Grid>
+
+		<TextBlock
+			Grid.Column="1"
+			Margin="12,0,0,0"
+			VerticalAlignment="Center"
+			CharacterSpacing="{StaticResource LookSpacing}"
+			FontFamily="{StaticResource LookFont}"
+			FontSize="11"
+			FontWeight="SemiBold"
+			Foreground="{ThemeResource LookLabelForeground}"
+			Text="{x:Bind Code, Mode=OneWay}"
+			TextTrimming="CharacterEllipsis" />
+
+		<ContentPresenter
+			Grid.Column="3"
+			VerticalAlignment="Center"
+			Content="{x:Bind Trailing, Mode=OneWay}" />
+	</Grid>
+
+</UserControl>

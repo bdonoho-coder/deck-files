@@ -39,6 +39,12 @@
 	<x:String x:Key="LookCrumbGlyph">&#xE76C;</x:String>
 	<Visibility x:Key="LookTabNode">Collapsed</Visibility>
 	<Visibility x:Key="LookTabUnderline">Collapsed</Visibility>
+	<Visibility x:Key="LookPane">Collapsed</Visibility>
+	<SolidColorBrush x:Key="LookPaneStroke" Color="Transparent" />
+	<Thickness x:Key="LookPaneThickness">0</Thickness>
+	<Thickness x:Key="LookInfoTabsMargin">12</Thickness>
+	<CommandBarLabelPosition x:Key="LookToolbarLabel">Collapsed</CommandBarLabelPosition>
+	<Visibility x:Key="LookTopTab">Visible</Visibility>
 	<CornerRadius x:Key="LookCardRadius">8</CornerRadius>
 	<Visibility x:Key="LookNotch">Collapsed</Visibility>
 	<x:Int32 x:Key="LookSpacing">0</x:Int32>

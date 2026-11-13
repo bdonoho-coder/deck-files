@@ -2,6 +2,7 @@
 // Licensed under the MIT License.
 
 using CommunityToolkit.WinUI;
+using Files.App.Controls;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Automation;
 using Microsoft.UI.Xaml.Controls;
@@ -305,7 +306,7 @@ namespace Files.App.UserControls
 				Width = double.NaN,
 				MinWidth = showIcon ? 40 : 0,
 				Label = item.IsGroup ? item.DisplayName : item.ExtendedDisplayName,
-				LabelPosition = item.ShowLabel ? CommandBarLabelPosition.Default : CommandBarLabelPosition.Collapsed,
+				LabelPosition = item.ShowLabel || Look.IsDeck ? CommandBarLabelPosition.Default : CommandBarLabelPosition.Collapsed,
 				IsHitTestVisible = false,
 				Style = useStyled ? flyoutStyle : null,
 				Flyout = item.IsGroup ? new MenuFlyout() : null,
@@ -327,7 +328,7 @@ namespace Files.App.UserControls
 				Width = double.NaN,
 				MinWidth = showIcon ? 40 : 0,
 				Label = label,
-				LabelPosition = showLabel ? CommandBarLabelPosition.Default : CommandBarLabelPosition.Collapsed,
+				LabelPosition = showLabel || Look.IsDeck ? CommandBarLabelPosition.Default : CommandBarLabelPosition.Collapsed,
 			};
 
 			if (!showIcon)
@@ -358,7 +359,7 @@ namespace Files.App.UserControls
 				Width = double.NaN,
 				MinWidth = showIcon ? 40 : 0,
 				Label = cmd.ExtendedLabel,
-				LabelPosition = showLabel ? CommandBarLabelPosition.Default : CommandBarLabelPosition.Collapsed,
+				LabelPosition = showLabel || Look.IsDeck ? CommandBarLabelPosition.Default : CommandBarLabelPosition.Collapsed,
 				IsChecked = cmd.IsOn,
 				IsEnabled = cmd.IsExecutable,
 			};

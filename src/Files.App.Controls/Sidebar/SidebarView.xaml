@@ -63,8 +63,11 @@
 			HorizontalAlignment="Stretch"
 			VerticalAlignment="Stretch"
 			Canvas.ZIndex="10"
+			BorderBrush="{ThemeResource LookPaneStroke}"
+			BorderThickness="{StaticResource LookPaneThickness}"
 			XYFocusKeyboardNavigation="Enabled">
 			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto" />
 				<RowDefinition Height="Auto" />
 				<RowDefinition Height="*" />
 				<RowDefinition Height="Auto" />
@@ -75,16 +78,19 @@
 
 			<!--  Content  -->
 			<ContentPresenter
-				Grid.RowSpan="3"
+				Grid.RowSpan="4"
 				HorizontalAlignment="Stretch"
 				VerticalAlignment="Stretch"
 				HorizontalContentAlignment="Stretch"
 				VerticalContentAlignment="Stretch"
 				Content="{x:Bind SidebarContent, Mode=OneWay}" />
 
+			<!--  Console Deck pane title (hidden in the other looks)  -->
+			<local:PaneHeader Grid.Row="0" Title="NAV  //  01" />
+
 			<!--  Header  -->
 			<ContentPresenter
-				Grid.Row="0"
+				Grid.Row="1"
 				HorizontalAlignment="Stretch"
 				VerticalAlignment="Stretch"
 				HorizontalContentAlignment="Stretch"
@@ -93,7 +99,7 @@
 
 			<!--  Menu Items  -->
 			<ItemsRepeaterScrollHost
-				Grid.Row="1"
+				Grid.Row="2"
 				HorizontalAlignment="Stretch"
 				VerticalAlignment="Stretch">
 				<ScrollViewer
@@ -119,7 +125,7 @@
 
 			<!--  Footer Items  -->
 			<ContentPresenter
-				Grid.Row="2"
+				Grid.Row="3"
 				HorizontalAlignment="Stretch"
 				VerticalAlignment="Stretch"
 				HorizontalContentAlignment="Stretch"

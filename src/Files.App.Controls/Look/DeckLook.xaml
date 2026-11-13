@@ -1,0 +1,24 @@
+<!--  Console Deck look: the HUD look (merged first) with titled console panes (NAV / DIR / INFO, see PaneHeader), key-cap toolbar buttons that show their labels, and the open tabs stacked on a left rail (DeckTabRail) instead of the top strip.  -->
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+	<!--  Panes: header strip on, thin accent outline  -->
+	<Visibility x:Key="LookPane">Visible</Visibility>
+	<SolidColorBrush
+		x:Key="LookPaneStroke"
+		Opacity="0.35"
+		Color="{ThemeResource SystemAccentColor}" />
+	<Thickness x:Key="LookPaneThickness">1</Thickness>
+	<!--  Info pane: Details / Preview switch sits under the INFO header  -->
+	<Thickness x:Key="LookInfoTabsMargin">12,44,12,12</Thickness>
+
+	<!--  Toolbar: every button shows its label and an outline, like a key cap  -->
+	<CommandBarLabelPosition x:Key="LookToolbarLabel">Default</CommandBarLabelPosition>
+	<SolidColorBrush
+		x:Key="AppBarButtonBorderBrush"
+		Opacity="0.35"
+		Color="{ThemeResource SystemAccentColor}" />
+
+	<!--  Tabs live on the left rail; the top strip keeps only the add button, the readout and the drag area  -->
+	<Visibility x:Key="LookTopTab">Collapsed</Visibility>
+
+</ResourceDictionary>

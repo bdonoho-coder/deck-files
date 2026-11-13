@@ -115,10 +115,16 @@
 			<RowDefinition Height="Auto" />
 			<RowDefinition Height="*" />
 		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<!--  Console Deck look: left tab rail  -->
+			<ColumnDefinition Width="Auto" />
+			<ColumnDefinition Width="*" />
+		</Grid.ColumnDefinitions>
 
 		<!--  Background Image  -->
 		<Image
 			Grid.RowSpan="3"
+			Grid.ColumnSpan="2"
 			HorizontalAlignment="{x:Bind ViewModel.AppThemeBackgroundImageHorizontalAlignment, Mode=OneWay}"
 			VerticalAlignment="{x:Bind ViewModel.AppThemeBackgroundImageVerticalAlignment, Mode=OneWay}"
 			Opacity="{x:Bind ViewModel.AppThemeBackgroundImageOpacity, Mode=OneWay}"
@@ -128,15 +134,25 @@
 		<!--  Tab Bar  -->
 		<tabbar:TabBar
 			x:Name="TabControl"
+			Grid.ColumnSpan="2"
 			HorizontalContentAlignment="Stretch"
 			x:Load="False"
 			Loaded="HorizontalMultitaskingControl_Loaded"
 			TabIndex="0" />
 
+		<!--  Console Deck look only: the open tabs stacked on a left rail  -->
+		<uc:DeckTabRail
+			x:Name="DeckTabRail"
+			Grid.Row="1"
+			Grid.RowSpan="2"
+			Grid.Column="0"
+			x:Load="{x:Bind controls:Look.IsDeck}" />
+
 		<!--  Address Bar  -->
 		<uc:NavigationToolbar
 			x:Name="NavToolbar"
 			Grid.Row="1"
+			Grid.Column="1"
 			HorizontalAlignment="Stretch"
 			HorizontalContentAlignment="Stretch"
 			x:Load="False"
@@ -148,6 +164,7 @@
 		<controls:SidebarView
 			x:Name="SidebarControl"
 			Grid.Row="2"
+			Grid.Column="1"
 			HorizontalAlignment="Stretch"
 			HorizontalContentAlignment="Stretch"
 			DisplayMode="{x:Bind SidebarAdaptiveViewModel.SidebarDisplayMode, Mode=TwoWay}"
@@ -231,13 +248,40 @@
 						</Grid>
 					</InfoBar>
 
-					<!--  Page Content  -->
-					<ContentPresenter
-						x:Name="PageContent"
+					<!--  Page Content, framed as the DIR pane in the Console Deck look (header + outline hidden otherwise)  -->
+					<Grid
 						Grid.Row="2"
 						Grid.Column="0"
-						HorizontalContentAlignment="Stretch"
-						Content="{x:Bind ViewModel.SelectedTabItem.ContentFrame, Mode=OneWay}" />
+						BorderBrush="{ThemeResource LookPaneStroke}"
+						BorderThickness="{StaticResource LookPaneThickness}">
+						<Grid.RowDefinitions>
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="*" />
+						</Grid.RowDefinitions>
+						<controls:PaneHeader Title="DIR  //  02" Code="{x:Bind controls:Look.Text(ViewModel.SelectedTabItem.Header), Mode=OneWay}">
+							<controls:PaneHeader.Trailing>
+								<Button
+									Width="30"
+									Height="30"
+									Padding="0"
+									Background="{ThemeResource LookAccent}"
+									BorderThickness="0"
+									Command="{x:Bind Commands.CloseSelectedTab}"
+									CornerRadius="0"
+									ToolTipService.ToolTip="{x:Bind Commands.CloseSelectedTab.LabelWithHotKey, Mode=OneWay}">
+									<FontIcon
+										FontSize="10"
+										Foreground="{ThemeResource LookTabSelectedForeground}"
+										Glyph="&#xE711;" />
+								</Button>
+							</controls:PaneHeader.Trailing>
+						</controls:PaneHeader>
+						<ContentPresenter
+							x:Name="PageContent"
+							Grid.Row="1"
+							HorizontalContentAlignment="Stretch"
+							Content="{x:Bind ViewModel.SelectedTabItem.ContentFrame, Mode=OneWay}" />
+					</Grid>
 
 					<!--  Info Pane Splitter  -->
 					<controls:GridSplitter

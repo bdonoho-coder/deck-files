@@ -22,6 +22,13 @@
 	<x:String x:Key="LookCrumbGlyph">&#xE76C;</x:String>
 	<Visibility x:Key="LookTabNode">Collapsed</Visibility>
 	<Visibility x:Key="LookTabUnderline">Collapsed</Visibility>
+	<!--  Console panes, key-cap toolbar labels and the left tab rail; DeckLook.xaml turns them on  -->
+	<Visibility x:Key="LookPane">Collapsed</Visibility>
+	<SolidColorBrush x:Key="LookPaneStroke" Color="Transparent" />
+	<Thickness x:Key="LookPaneThickness">0</Thickness>
+	<Thickness x:Key="LookInfoTabsMargin">12</Thickness>
+	<CommandBarLabelPosition x:Key="LookToolbarLabel">Collapsed</CommandBarLabelPosition>
+	<Visibility x:Key="LookTopTab">Visible</Visibility>
 	<!--  Cards view: square plates; DossierLook.xaml adds the dark fill, accent stroke and tag notch  -->
 	<CornerRadius x:Key="LookCardRadius">0</CornerRadius>
 	<Visibility x:Key="LookNotch">Collapsed</Visibility>

@@ -101,7 +101,7 @@
 				AutomationProperties.Name="{x:Bind Commands.ToggleFilterHeader.AutomationName}"
 				IsChecked="{x:Bind Commands.ToggleFilterHeader.IsOn, Mode=TwoWay}"
 				Label="{x:Bind Commands.ToggleFilterHeader.Label}"
-				LabelPosition="Collapsed"
+				LabelPosition="{StaticResource LookToolbarLabel}"
 				ToolTipService.ToolTip="{x:Bind Commands.ToggleFilterHeader.LabelWithHotKey, Mode=OneWay}">
 				<controls:ThemedIcon Style="{StaticResource App.ThemedIcons.Filter}" />
 			</AppBarToggleButton>
@@ -116,7 +116,7 @@
 				AccessKeyInvoked="AppBarButton_AccessKeyInvoked"
 				AutomationProperties.Name="{helpers:ResourceString Name=SelectionOptions}"
 				Label="{helpers:ResourceString Name=NavToolbarSelectionOptions/Label}"
-				LabelPosition="Collapsed"
+				LabelPosition="{StaticResource LookToolbarLabel}"
 				Style="{StaticResource ToolBarAppBarButtonFlyoutStyle}"
 				ToolTipService.ToolTip="{helpers:ResourceString Name=SelectionOptions}">
 
@@ -160,7 +160,7 @@
 				AccessKeyInvoked="AppBarButton_AccessKeyInvoked"
 				AutomationProperties.Name="{helpers:ResourceString Name=Sort}"
 				Label="{helpers:ResourceString Name=Sort}"
-				LabelPosition="Collapsed"
+				LabelPosition="{StaticResource LookToolbarLabel}"
 				Style="{StaticResource ToolBarAppBarButtonFlyoutStyle}"
 				ToolTipService.ToolTip="{helpers:ResourceString Name=Sort}">
 
@@ -271,7 +271,7 @@
 				AccessKeyInvoked="AppBarButton_AccessKeyInvoked"
 				AutomationProperties.Name="{helpers:ResourceString Name=Layout}"
 				Label="{helpers:ResourceString Name=Layout}"
-				LabelPosition="Collapsed"
+				LabelPosition="{StaticResource LookToolbarLabel}"
 				Style="{StaticResource ToolBarAppBarButtonFlyoutStyle}"
 				ToolTipService.ToolTip="{helpers:ResourceString Name=Layout}">
 
@@ -851,7 +851,7 @@
 				AutomationProperties.Name="{x:Bind Commands.ToggleInfoPane.AutomationName}"
 				IsChecked="{x:Bind Commands.ToggleInfoPane.IsOn, Mode=TwoWay}"
 				Label="{x:Bind Commands.ToggleInfoPane.Label}"
-				LabelPosition="Collapsed"
+				LabelPosition="{StaticResource LookToolbarLabel}"
 				ToolTipService.ToolTip="{x:Bind Commands.ToggleInfoPane.LabelWithHotKey, Mode=OneWay}"
 				Visibility="{x:Bind ShowPreviewPaneButton, Mode=OneWay}">
 				<controls:ThemedIcon Style="{StaticResource App.ThemedIcons.PanelRight}" />

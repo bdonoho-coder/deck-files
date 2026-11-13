@@ -1,0 +1,113 @@
+<!--  Copyright (c) Files Community. Licensed under the MIT License.  -->
+<UserControl
+	x:Class="Files.App.UserControls.DeckTabRail"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:local="using:Files.App.UserControls"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	xmlns:root="using:Files.App"
+	xmlns:tabbar="using:Files.App.UserControls.TabBar"
+	xmlns:vm="using:Files.App.ViewModels"
+	mc:Ignorable="d">
+
+	<UserControl.Resources>
+		<!--  Stacked tab: 40 px square key with the tab icon and a three-letter code; accent tint while selected (HUD list selection brushes)  -->
+		<Style x:Key="RailItemStyle" TargetType="ListViewItem">
+			<Setter Property="Width" Value="40" />
+			<Setter Property="MinWidth" Value="40" />
+			<Setter Property="Height" Value="40" />
+			<Setter Property="MinHeight" Value="40" />
+			<Setter Property="Margin" Value="0,0,0,8" />
+			<Setter Property="Padding" Value="0" />
+			<Setter Property="CornerRadius" Value="0" />
+			<Setter Property="Background" Value="{ThemeResource ControlFillColorDefaultBrush}" />
+			<Setter Property="BorderBrush" Value="{ThemeResource LookCardBorder}" />
+			<Setter Property="BorderThickness" Value="1" />
+			<Setter Property="HorizontalContentAlignment" Value="Center" />
+			<Setter Property="VerticalContentAlignment" Value="Center" />
+		</Style>
+		<Style x:Key="RailLabelStyle" TargetType="TextBlock">
+			<Setter Property="CharacterSpacing" Value="{StaticResource LookSpacing}" />
+			<Setter Property="FontFamily" Value="{StaticResource LookFont}" />
+			<Setter Property="FontSize" Value="9" />
+			<Setter Property="Foreground" Value="{ThemeResource LookLabelForeground}" />
+		</Style>
+	</UserControl.Resources>
+
+	<!--  Console Deck look: the open tabs stacked on the left; a click selects the tab through the same index the top strip uses  -->
+	<Grid
+		Width="56"
+		Padding="0,8,0,8"
+		BorderBrush="{ThemeResource LookDivider}"
+		BorderThickness="0,0,1,0">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="*" />
+			<RowDefinition Height="Auto" />
+		</Grid.RowDefinitions>
+
+		<ListView
+			x:Name="Rail"
+			HorizontalAlignment="Center"
+			ItemContainerStyle="{StaticResource RailItemStyle}"
+			ItemsSource="{x:Bind vm:MainPageViewModel.AppInstances}"
+			ScrollViewer.VerticalScrollBarVisibility="Hidden"
+			SelectedIndex="{x:Bind root:App.AppModel.TabStripSelectedIndex, Mode=OneWay}"
+			SelectionChanged="Rail_SelectionChanged"
+			SelectionMode="Single">
+			<ListView.ItemTemplate>
+				<DataTemplate x:DataType="tabbar:TabBarItem">
+					<!--  Code only: binding the tab's ImageIconSource to an IconSourceElement throws under Native AOT  -->
+					<TextBlock
+						HorizontalAlignment="Center"
+						CharacterSpacing="{StaticResource LookSpacing}"
+						FontFamily="{StaticResource LookFont}"
+						FontSize="12"
+						FontWeight="Bold"
+						Text="{x:Bind local:DeckTabRail.Code(Header), Mode=OneWay}"
+						ToolTipService.ToolTip="{x:Bind ToolTipText, Mode=OneWay}" />
+				</DataTemplate>
+			</ListView.ItemTemplate>
+		</ListView>
+
+		<Button
+			Grid.Row="1"
+			Width="40"
+			Height="40"
+			Padding="0"
+			HorizontalAlignment="Center"
+			AutomationProperties.Name="{x:Bind Commands.NewTab.AutomationName}"
+			Background="Transparent"
+			BorderBrush="{ThemeResource LookCardBorder}"
+			BorderThickness="1"
+			Command="{x:Bind Commands.NewTab}"
+			CornerRadius="0"
+			ToolTipService.ToolTip="{x:Bind Commands.NewTab.LabelWithHotKey, Mode=OneWay}">
+			<FontIcon FontSize="12" Glyph="&#xE710;" />
+		</Button>
+
+		<!--  Vertical label: a Canvas neither constrains nor clips, so the 140 px text can turn -90 degrees around the centre of a 16 x 140 slot  -->
+		<Canvas
+			Grid.Row="3"
+			Width="16"
+			Height="140"
+			HorizontalAlignment="Center">
+			<TextBlock
+				Canvas.Left="-62"
+				Canvas.Top="62"
+				Width="140"
+				Height="16"
+				RenderTransformOrigin="0.5,0.5"
+				Style="{StaticResource RailLabelStyle}"
+				Text="{x:Bind Footer}"
+				TextAlignment="Center">
+				<TextBlock.RenderTransform>
+					<RotateTransform Angle="-90" />
+				</TextBlock.RenderTransform>
+			</TextBlock>
+		</Canvas>
+	</Grid>
+
+</UserControl>

@@ -139,7 +139,7 @@
 		BackgroundSizing="InnerBorderEdge"
 		BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
 		BorderThickness="1"
-		CornerRadius="8">
+		CornerRadius="{StaticResource LookCardRadius}">
 		<Grid.RowDefinitions>
 			<RowDefinition Height="Auto" />
 			<RowDefinition Height="2*" />
@@ -150,12 +150,19 @@
 			<ColumnDefinition x:Name="PropertiesColumn" Width="3*" />
 		</Grid.ColumnDefinitions>
 
+		<!--  Console Deck pane title (hidden in the other looks)  -->
+		<controls:PaneHeader
+			Grid.Row="0"
+			Grid.ColumnSpan="2"
+			VerticalAlignment="Top"
+			Title="INFO  //  03" />
+
 		<!--  Panes  -->
 		<StackPanel
 			Grid.Row="0"
 			Grid.Column="0"
 			Grid.ColumnSpan="2"
-			Margin="12"
+			Margin="{StaticResource LookInfoTabsMargin}"
 			Padding="-1"
 			HorizontalAlignment="Center"
 			VerticalAlignment="Center"

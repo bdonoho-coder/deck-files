@@ -58,6 +58,8 @@
 	</Style>
 
 	<Style x:Key="TabBarItemStyle" TargetType="TabViewItem">
+		<!--  Console Deck look hides the top tabs; they live on the left rail instead  -->
+		<Setter Property="Visibility" Value="{StaticResource LookTopTab}" />
 		<Setter Property="Background" Value="{ThemeResource TabViewItemHeaderBackground}" />
 		<Setter Property="HorizontalContentAlignment" Value="Left" />
 		<Setter Property="UseSystemFocusVisuals" Value="{StaticResource UseSystemFocusVisuals}" />
