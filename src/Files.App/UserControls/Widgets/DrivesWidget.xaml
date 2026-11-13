@@ -33,7 +33,7 @@
 						VerticalContentAlignment="Stretch"
 						AutomationProperties.Name="{x:Bind Item.Text, Mode=OneWay}"
 						Click="Button_Click"
-						Style="{StaticResource HudCardButtonStyle}"
+						Style="{StaticResource LookCardButtonStyle}"
 						DataContext="{x:Bind}"
 						PointerPressed="Button_PointerPressed"
 						RightTapped="Button_RightTapped"
@@ -87,8 +87,8 @@
 								VerticalContentAlignment="Stretch"
 								x:Load="{x:Bind Item.ShowDriveDetails, Mode=OneWay}"
 								AutomationProperties.AccessibilityView="Raw"
-								CornerRadius="0"
-								Foreground="{ThemeResource HudCardAccentBrush}"
+								CornerRadius="{ThemeResource ControlCornerRadius}"
+								Foreground="{ThemeResource LookAccent}"
 								Maximum="{x:Bind Item.MaxSpace.GigaBytes, Mode=OneWay}"
 								Value="{x:Bind Item.SpaceUsed.GigaBytes, Mode=OneWay}" />
 

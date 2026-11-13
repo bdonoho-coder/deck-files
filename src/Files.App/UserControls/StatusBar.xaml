@@ -58,15 +58,16 @@
 					Width="6"
 					Height="6"
 					VerticalAlignment="Center"
-					Fill="{ThemeResource HudCardAccentBrush}" />
+					Fill="{ThemeResource LookAccent}"
+					Visibility="{StaticResource LookDecor}" />
 
 				<TextBlock
 					x:Name="DirectoryItemCount"
 					VerticalAlignment="Center"
 					x:Load="{x:Bind ShowInfoText, Mode=OneWay}"
 					Foreground="{ThemeResource TextFillColorSecondaryBrush}"
-					Style="{StaticResource HudStatusTextStyle}"
-					Text="{x:Bind StatusBarViewModel.DirectoryItemCount.ToUpperInvariant(), Mode=OneWay}" />
+					Style="{StaticResource LookStatusTextStyle}"
+					Text="{x:Bind controls:Look.Text(StatusBarViewModel.DirectoryItemCount), Mode=OneWay}" />
 
 				<!--  Divider  -->
 				<Border
@@ -74,15 +75,15 @@
 					Width="1"
 					Height="18"
 					x:Load="{x:Bind SelectedItemsPropertiesViewModel.IsItemSelected, Mode=OneWay}"
-					Background="{ThemeResource HudCardBorderBrush}" />
+					Background="{ThemeResource LookDivider}" />
 				<!--  Selected Items Count  -->
 				<TextBlock
 					x:Name="SelectedItemsCountString"
 					VerticalAlignment="Center"
 					x:Load="{x:Bind SelectedItemsPropertiesViewModel.IsItemSelected, Mode=OneWay}"
 					Foreground="{ThemeResource TextFillColorSecondaryBrush}"
-					Style="{StaticResource HudStatusTextStyle}"
-					Text="{x:Bind SelectedItemsPropertiesViewModel.SelectedItemsCountString.ToUpperInvariant(), Mode=OneWay}" />
+					Style="{StaticResource LookStatusTextStyle}"
+					Text="{x:Bind controls:Look.Text(SelectedItemsPropertiesViewModel.SelectedItemsCountString), Mode=OneWay}" />
 
 				<!--  Divider  -->
 				<Border
@@ -90,15 +91,15 @@
 					Width="1"
 					Height="18"
 					x:Load="{x:Bind SelectedItemsPropertiesViewModel.ItemSizeVisibility, Mode=OneWay}"
-					Background="{ThemeResource HudCardBorderBrush}" />
+					Background="{ThemeResource LookDivider}" />
 				<!--  Item Size  -->
 				<TextBlock
 					x:Name="ItemSize"
 					VerticalAlignment="Center"
 					x:Load="{x:Bind SelectedItemsPropertiesViewModel.ItemSizeVisibility, Mode=OneWay}"
 					Foreground="{ThemeResource TextFillColorSecondaryBrush}"
-					Style="{StaticResource HudStatusTextStyle}"
-					Text="{x:Bind SelectedItemsPropertiesViewModel.ItemSize.ToUpperInvariant(), Mode=OneWay}" />
+					Style="{StaticResource LookStatusTextStyle}"
+					Text="{x:Bind controls:Look.Text(SelectedItemsPropertiesViewModel.ItemSize), Mode=OneWay}" />
 			</StackPanel>
 
 			<!--  Compact stand-in for the folder and selection info  -->
@@ -233,7 +234,7 @@
 					Width="1"
 					Height="18"
 					x:Load="{x:Bind StatusBarViewModel.GitBranchDisplayName, Mode=OneWay, Converter={StaticResource NullToFalseConverter}, FallbackValue=False}"
-					Background="{ThemeResource HudCardBorderBrush}" />
+					Background="{ThemeResource LookDivider}" />
 			</StackPanel>
 
 			<!--  Use visibility because it causes a crash to use a TwoWay x:Bind on an element that is inside an element with x:Load (#12589, #12599)  -->
@@ -471,7 +472,7 @@
 									Width="1"
 									Height="18"
 									VerticalAlignment="Center"
-									Background="{ThemeResource HudCardBorderBrush}" />
+									Background="{ThemeResource LookDivider}" />
 
 								<Button
 									x:Name="GitBranchCompact"

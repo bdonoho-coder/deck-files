@@ -1,0 +1,61 @@
+﻿<!--  Minimal look: the stock Files shapes (rounded corners, plain labels, no brackets or scale lines). Colors still follow the Windows accent color, which the theme picker sets.  -->
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+	<ResourceDictionary.ThemeDictionaries>
+		<ResourceDictionary x:Key="Default">
+			<StaticResource x:Key="LookLabelForeground" ResourceKey="TextFillColorSecondaryBrush" />
+			<StaticResource x:Key="LookDivider" ResourceKey="DividerStrokeColorDefaultBrush" />
+			<StaticResource x:Key="LookTabSelectedForeground" ResourceKey="TabViewItemHeaderForegroundSelected" />
+			<StaticResource x:Key="LookTabSelectedIconForeground" ResourceKey="TabViewItemIconForegroundSelected" />
+			<StaticResource x:Key="LookTabSelectedCloseForeground" ResourceKey="TabViewItemHeaderSelectedCloseButtonForeground" />
+			<StaticResource x:Key="LookOmnibarBorder" ResourceKey="CircleElevationBorderBrush" />
+			<StaticResource x:Key="LookOmnibarBorderPointerOver" ResourceKey="CircleElevationBorderBrush" />
+			<StaticResource x:Key="LookSidebarSelected" ResourceKey="ControlFillColorDefaultBrush" />
+			<StaticResource x:Key="LookSidebarSelectedBorder" ResourceKey="ButtonBorderBrush" />
+		</ResourceDictionary>
+		<ResourceDictionary x:Key="Light">
+			<StaticResource x:Key="LookLabelForeground" ResourceKey="TextFillColorSecondaryBrush" />
+			<StaticResource x:Key="LookDivider" ResourceKey="DividerStrokeColorDefaultBrush" />
+			<StaticResource x:Key="LookTabSelectedForeground" ResourceKey="TabViewItemHeaderForegroundSelected" />
+			<StaticResource x:Key="LookTabSelectedIconForeground" ResourceKey="TabViewItemIconForegroundSelected" />
+			<StaticResource x:Key="LookTabSelectedCloseForeground" ResourceKey="TabViewItemHeaderSelectedCloseButtonForeground" />
+			<StaticResource x:Key="LookOmnibarBorder" ResourceKey="CircleElevationBorderBrush" />
+			<StaticResource x:Key="LookOmnibarBorderPointerOver" ResourceKey="CircleElevationBorderBrush" />
+			<StaticResource x:Key="LookSidebarSelected" ResourceKey="ControlFillColorDefaultBrush" />
+			<StaticResource x:Key="LookSidebarSelectedBorder" ResourceKey="ButtonBorderBrush" />
+		</ResourceDictionary>
+	</ResourceDictionary.ThemeDictionaries>
+
+	<!--  Shared switches (HudLook.xaml defines the same keys)  -->
+	<FontFamily x:Key="LookFont">Segoe UI Variable Text</FontFamily>
+	<x:Int32 x:Key="LookSpacing">0</x:Int32>
+	<Visibility x:Key="LookDecor">Collapsed</Visibility>
+	<Visibility x:Key="LookHeaderName">Visible</Visibility>
+	<SolidColorBrush x:Key="LookAccent" Color="{ThemeResource SystemAccentColor}" />
+
+	<!--  Tabs: the stock rounded tab  -->
+	<GridLength x:Key="LookTabCutWidth">0</GridLength>
+	<StaticResource x:Key="LookSelectedTabPadding" ResourceKey="TabViewSelectedItemHeaderPadding" />
+	<Visibility x:Key="LookHudTab">Collapsed</Visibility>
+	<Visibility x:Key="LookRoundTab">Visible</Visibility>
+
+	<!--  Address bar: the stock pill  -->
+	<CornerRadius x:Key="LookOmnibarCornerRadius">19</CornerRadius>
+	<CornerRadius x:Key="LookOmnibarModeCornerRadius">17</CornerRadius>
+
+	<!--  Side panel: the stock short rounded pill  -->
+	<x:Double x:Key="LookIndicatorHeight">16</x:Double>
+	<VerticalAlignment x:Key="LookIndicatorAlign">Center</VerticalAlignment>
+	<x:Double x:Key="LookIndicatorRadius">2</x:Double>
+
+	<Style x:Key="LookStatusTextStyle" TargetType="TextBlock" />
+
+	<!--  Home cards: the stock button with the stock corners  -->
+	<Style
+		x:Key="LookCardButtonStyle"
+		BasedOn="{StaticResource DefaultButtonStyle}"
+		TargetType="Button">
+		<Setter Property="CornerRadius" Value="{ThemeResource ControlCornerRadius}" />
+	</Style>
+
+</ResourceDictionary>

@@ -33,7 +33,7 @@
 						VerticalContentAlignment="Stretch"
 						AutomationProperties.Name="{x:Bind AutomationProperties}"
 						Click="Button_Click"
-						Style="{StaticResource HudCardButtonStyle}"
+						Style="{StaticResource LookCardButtonStyle}"
 						DataContext="{x:Bind}"
 						PointerPressed="Button_PointerPressed"
 						RightTapped="Button_RightTapped"

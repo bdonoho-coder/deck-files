@@ -7,18 +7,6 @@
 	xmlns:local="using:Files.App.Controls">
 
 	<x:Double x:Key="SidebarOpenPaneLength">300</x:Double>
-
-	<!--  HUD colors follow the Windows accent color, which the theme picker sets  -->
-	<SolidColorBrush x:Key="SidebarHudAccentBrush" Color="{ThemeResource SystemAccentColor}" />
-	<SolidColorBrush
-		x:Key="SidebarHudSelectedBrush"
-		Opacity="0.16"
-		Color="{ThemeResource SystemAccentColor}" />
-	<SolidColorBrush
-		x:Key="SidebarHudSelectedBorderBrush"
-		Opacity="0.5"
-		Color="{ThemeResource SystemAccentColor}" />
-	<FontFamily x:Key="SidebarHudFont">HUD Face, Bahnschrift, Segoe UI Variable Text</FontFamily>
 	<x:Double x:Key="SidebarNegativeOpenPaneLength">-300</x:Double>
 	<x:Double x:Key="SidebarCompactOpenPaneLength">56</x:Double>
 	<x:Double x:Key="SidebarNegativeCompactOpenPaneLength">-56</x:Double>
@@ -91,15 +79,16 @@
 								Margin="0,0,8,0"
 								HorizontalAlignment="Left"
 								VerticalAlignment="Center"
-								Fill="{ThemeResource SidebarHudAccentBrush}" />
+								Fill="{ThemeResource LookAccent}"
+								Visibility="{StaticResource LookDecor}" />
 							<TextBlock
 								Margin="14,0,0,0"
 								VerticalAlignment="Center"
-								CharacterSpacing="60"
-								FontFamily="{StaticResource SidebarHudFont}"
+								CharacterSpacing="{StaticResource LookSpacing}"
+								FontFamily="{StaticResource LookFont}"
 								FontSize="11"
 								FontWeight="SemiBold"
-								Foreground="{ThemeResource SidebarHudAccentBrush}"
+								Foreground="{ThemeResource LookLabelForeground}"
 								Opacity="0.85"
 								Text="{TemplateBinding HudGroupLabel}" />
 							<Rectangle
@@ -107,8 +96,9 @@
 								Height="1"
 								Margin="10,1,0,0"
 								VerticalAlignment="Center"
-								Fill="{ThemeResource SidebarHudAccentBrush}"
-								Opacity="0.25" />
+								Fill="{ThemeResource LookAccent}"
+								Opacity="0.25"
+								Visibility="{StaticResource LookDecor}" />
 						</Grid>
 
 						<!--  Focusable Visual  -->
@@ -124,7 +114,7 @@
 								Background="{ThemeResource SubtleFillColorTransparentBrush}"
 								BackgroundSizing="InnerBorderEdge"
 								BorderThickness="1"
-								CornerRadius="0"
+								CornerRadius="{ThemeResource ControlCornerRadius}"
 								IsTabStop="True"
 								TabFocusNavigation="Once"
 								ToolTipService.ToolTip="{TemplateBinding ToolTip}"
@@ -149,11 +139,14 @@
 									x:Name="SelectionIndicator"
 									Grid.Column="0"
 									Width="3"
+									Height="{StaticResource LookIndicatorHeight}"
 									HorizontalAlignment="Left"
-									VerticalAlignment="Stretch"
+									VerticalAlignment="{StaticResource LookIndicatorAlign}"
 									AutomationProperties.AccessibilityView="Raw"
-									Fill="{ThemeResource SidebarHudAccentBrush}"
-									Opacity="0" />
+									Fill="{ThemeResource LookAccent}"
+									Opacity="0"
+									RadiusX="{StaticResource LookIndicatorRadius}"
+									RadiusY="{StaticResource LookIndicatorRadius}" />
 
 								<!--  Depth indent spacer (width = NestingLevel * 16)  -->
 								<Border Grid.Column="1" Width="{TemplateBinding IndentWidth}" />
@@ -228,18 +221,18 @@
 										<ColumnDefinition Width="*" />
 									</Grid.ColumnDefinitions>
 									<TextBlock
-										CharacterSpacing="60"
-										FontFamily="{StaticResource SidebarHudFont}"
+										CharacterSpacing="{StaticResource LookSpacing}"
+										FontFamily="{StaticResource LookFont}"
 										FontSize="12"
 										FontWeight="SemiBold"
-										Foreground="{ThemeResource SidebarHudAccentBrush}"
+										Foreground="{ThemeResource LookAccent}"
 										Text="{TemplateBinding HudLabel}" />
 									<Rectangle
 										Grid.Column="1"
 										Height="1"
 										Margin="10,1,0,0"
 										VerticalAlignment="Center"
-										Fill="{ThemeResource SidebarHudAccentBrush}"
+										Fill="{ThemeResource LookAccent}"
 										Opacity="0.4" />
 								</Grid>
 
@@ -263,7 +256,7 @@
 									Margin="-1"
 									BorderBrush="{ThemeResource AccentFillColorDefaultBrush}"
 									BorderThickness="2"
-									CornerRadius="0"
+									CornerRadius="{ThemeResource ControlCornerRadius}"
 									IsHitTestVisible="False"
 									Visibility="Collapsed" />
 
@@ -320,8 +313,8 @@
 									<VisualState.Setters>
 										<Setter Target="ItemNameTextBlock.Margin" Value="8,0,12,0" />
 										<Setter Target="ItemNameTextBlock.FontWeight" Value="SemiBold" />
-										<Setter Target="ItemNameTextBlock.Visibility" Value="Collapsed" />
-										<Setter Target="HudHeader.Visibility" Value="Visible" />
+										<Setter Target="ItemNameTextBlock.Visibility" Value="{StaticResource LookHeaderName}" />
+										<Setter Target="HudHeader.Visibility" Value="{StaticResource LookDecor}" />
 									</VisualState.Setters>
 								</VisualState>
 
@@ -330,8 +323,8 @@
 										<Setter Target="ExpandCollapseChevron.Visibility" Value="Visible" />
 										<Setter Target="ItemNameTextBlock.Margin" Value="8,0,12,0" />
 										<Setter Target="ItemNameTextBlock.FontWeight" Value="SemiBold" />
-										<Setter Target="ItemNameTextBlock.Visibility" Value="Collapsed" />
-										<Setter Target="HudHeader.Visibility" Value="Visible" />
+										<Setter Target="ItemNameTextBlock.Visibility" Value="{StaticResource LookHeaderName}" />
+										<Setter Target="HudHeader.Visibility" Value="{StaticResource LookDecor}" />
 									</VisualState.Setters>
 								</VisualState>
 
@@ -340,8 +333,8 @@
 										<Setter Target="ExpandCollapseChevron.Visibility" Value="Visible" />
 										<Setter Target="ItemNameTextBlock.Margin" Value="8,0,12,0" />
 										<Setter Target="ItemNameTextBlock.FontWeight" Value="SemiBold" />
-										<Setter Target="ItemNameTextBlock.Visibility" Value="Collapsed" />
-										<Setter Target="HudHeader.Visibility" Value="Visible" />
+										<Setter Target="ItemNameTextBlock.Visibility" Value="{StaticResource LookHeaderName}" />
+										<Setter Target="HudHeader.Visibility" Value="{StaticResource LookDecor}" />
 									</VisualState.Setters>
 								</VisualState>
 
@@ -381,8 +374,8 @@
 								<VisualState x:Name="Selected">
 									<VisualState.Setters>
 										<Setter Target="SelectionIndicator.Opacity" Value="1" />
-										<Setter Target="ElementGrid.BorderBrush" Value="{ThemeResource SidebarHudSelectedBorderBrush}" />
-										<Setter Target="ElementGrid.Background" Value="{ThemeResource SidebarHudSelectedBrush}" />
+										<Setter Target="ElementGrid.BorderBrush" Value="{ThemeResource LookSidebarSelectedBorder}" />
+										<Setter Target="ElementGrid.Background" Value="{ThemeResource LookSidebarSelected}" />
 									</VisualState.Setters>
 								</VisualState>
 							</VisualStateGroup>
@@ -391,8 +384,8 @@
 								<VisualState x:Name="Normal" />
 								<VisualState x:Name="NormalSelected">
 									<VisualState.Setters>
-										<Setter Target="ElementGrid.Background" Value="{ThemeResource SidebarHudSelectedBrush}" />
-										<Setter Target="ElementGrid.BorderBrush" Value="{ThemeResource SidebarHudSelectedBorderBrush}" />
+										<Setter Target="ElementGrid.Background" Value="{ThemeResource LookSidebarSelected}" />
+										<Setter Target="ElementGrid.BorderBrush" Value="{ThemeResource LookSidebarSelectedBorder}" />
 									</VisualState.Setters>
 								</VisualState>
 								<VisualState x:Name="PointerOver">
@@ -404,7 +397,7 @@
 								<VisualState x:Name="PointerOverSelected">
 									<VisualState.Setters>
 										<Setter Target="ElementGrid.Background" Value="{ThemeResource ControlFillColorSecondaryBrush}" />
-										<Setter Target="ElementGrid.BorderBrush" Value="{ThemeResource SidebarHudSelectedBorderBrush}" />
+										<Setter Target="ElementGrid.BorderBrush" Value="{ThemeResource LookSidebarSelectedBorder}" />
 									</VisualState.Setters>
 								</VisualState>
 								<VisualState x:Name="Pressed">
@@ -416,7 +409,7 @@
 								<VisualState x:Name="PressedSelected">
 									<VisualState.Setters>
 										<Setter Target="ElementGrid.Background" Value="{ThemeResource ControlFillColorTertiaryBrush}" />
-										<Setter Target="ElementGrid.BorderBrush" Value="{ThemeResource SidebarHudSelectedBorderBrush}" />
+										<Setter Target="ElementGrid.BorderBrush" Value="{ThemeResource LookSidebarSelectedBorder}" />
 									</VisualState.Setters>
 								</VisualState>
 
