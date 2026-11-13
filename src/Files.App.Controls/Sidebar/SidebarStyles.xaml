@@ -154,6 +154,12 @@
 									<ColumnDefinition Width="Auto" />
 								</Grid.ColumnDefinitions>
 
+								<!--  Cyber look: chamfered selection plate behind the whole row, shown by LookCyberSelect in the Selected state  -->
+								<controls:CyberPlate
+									x:Name="CyberSelect"
+									Grid.ColumnSpan="6"
+									Visibility="Collapsed" />
+
 								<!--  Selection Rectangle  -->
 								<Rectangle
 									x:Name="SelectionIndicator"
@@ -451,6 +457,7 @@
 								<VisualState x:Name="Selected">
 									<VisualState.Setters>
 										<Setter Target="SelectionIndicator.Opacity" Value="1" />
+										<Setter Target="CyberSelect.Visibility" Value="{StaticResource LookCyberSelect}" />
 										<Setter Target="ElementGrid.BorderBrush" Value="{ThemeResource LookSidebarSelectedBorder}" />
 										<Setter Target="ElementGrid.Background" Value="{ThemeResource LookSidebarSelected}" />
 									</VisualState.Setters>

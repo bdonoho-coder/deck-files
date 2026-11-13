@@ -187,6 +187,12 @@
 		ContextFlyout="{x:Bind BaseContextMenuFlyout}"
 		SizeChanged="RootGrid_SizeChanged">
 
+		<!--  Cyber look: dim dot grid behind the list, so empty space reads as a HUD panel  -->
+		<uc:CyberDots
+			x:Name="CyberDots"
+			x:Load="{x:Bind controls:Look.IsCyber}"
+			Canvas.ZIndex="0" />
+
 		<!--  Empty Indicator  -->
 		<uc:FolderEmptyIndicator
 			Grid.Row="3"

@@ -60,6 +60,28 @@ namespace Files.App.Controls
 		public static string? Text(string? text)
 			=> IsHud ? text?.ToUpperInvariant() : text;
 
+		/// <summary>Cyber look status bar readout: the item count in hex plus a checksum of the text, e.g. "N 0x001F  //  CRC 3A7C".</summary>
+		public static string Hex(string? text)
+		{
+			if (string.IsNullOrEmpty(text))
+				return string.Empty;
+			var n = 0;
+			foreach (var ch in text)
+			{
+				if (ch < '0' || ch > '9')
+					break;
+				n = n * 10 + (ch - '0');
+			}
+			var crc = 0xFFFF;
+			foreach (var ch in text)
+			{
+				crc ^= ch << 8;
+				for (var i = 0; i < 8; i++)
+					crc = (crc & 0x8000) != 0 ? ((crc << 1) ^ 0x1021) & 0xFFFF : (crc << 1) & 0xFFFF;
+			}
+			return $"N 0x{n:X4}  //  CRC {crc:X4}";
+		}
+
 		/// <summary>Code label such as "GAMES  //  12" in the HUD look, the plain name otherwise.</summary>
 		public static string Label(string name, int count)
 			=> IsHud ? $"{name.ToUpperInvariant()}  //  {count:00}" : name;

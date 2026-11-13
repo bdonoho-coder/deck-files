@@ -154,6 +154,18 @@
 			</Button>
 		</Grid>
 
+		<!--  Cyber look: hex readout at the right edge of the info area  -->
+		<TextBlock
+			x:Name="CyberHex"
+			Grid.Column="0"
+			Margin="0,0,16,0"
+			HorizontalAlignment="Right"
+			VerticalAlignment="Center"
+			x:Load="{x:Bind controls:Look.IsCyber}"
+			Foreground="{ThemeResource LookLabelForeground}"
+			Style="{StaticResource LookStatusTextStyle}"
+			Text="{x:Bind controls:Look.Hex(StatusBarViewModel.DirectoryItemCount), Mode=OneWay}" />
+
 		<!--  Actions area, collapses into the Git button in the compact states  -->
 		<StackPanel
 			x:Name="StandardActions"

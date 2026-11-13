@@ -28,4 +28,9 @@
 	<Thickness x:Key="LookPlateMargin">0,0,0,4</Thickness>
 	<Visibility x:Key="LookBadge">Visible</Visibility>
 
+	<!--  Side panel: the selected row gets a chamfered plate (CyberPlate) instead of the rectangular tint + outline  -->
+	<Visibility x:Key="LookCyberSelect">Visible</Visibility>
+	<SolidColorBrush x:Key="LookSidebarSelected" Color="Transparent" />
+	<SolidColorBrush x:Key="LookSidebarSelectedBorder" Color="Transparent" />
+
 </ResourceDictionary>

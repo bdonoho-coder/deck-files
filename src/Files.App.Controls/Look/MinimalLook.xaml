@@ -47,6 +47,7 @@
 	<Visibility x:Key="LookTopTab">Visible</Visibility>
 	<Visibility x:Key="LookChamfer">Collapsed</Visibility>
 	<Visibility x:Key="LookCyberTab">Collapsed</Visibility>
+	<Visibility x:Key="LookCyberSelect">Collapsed</Visibility>
 	<Thickness x:Key="LookInfoPaneThickness">1</Thickness>
 	<SolidColorBrush x:Key="LookPlateFill" Color="Transparent" />
 	<Thickness x:Key="LookPlateMargin">0</Thickness>
