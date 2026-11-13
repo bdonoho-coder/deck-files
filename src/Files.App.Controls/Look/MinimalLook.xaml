@@ -45,6 +45,9 @@
 	<Thickness x:Key="LookInfoTabsMargin">12</Thickness>
 	<CommandBarLabelPosition x:Key="LookToolbarLabel">Collapsed</CommandBarLabelPosition>
 	<Visibility x:Key="LookTopTab">Visible</Visibility>
+	<Visibility x:Key="LookRetro">Collapsed</Visibility>
+	<Visibility x:Key="LookLineSolid">Collapsed</Visibility>
+	<Visibility x:Key="LookLineDashed">Collapsed</Visibility>
 	<CornerRadius x:Key="LookCardRadius">8</CornerRadius>
 	<Visibility x:Key="LookNotch">Collapsed</Visibility>
 	<x:Int32 x:Key="LookSpacing">0</x:Int32>

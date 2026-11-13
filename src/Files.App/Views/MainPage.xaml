@@ -140,6 +140,14 @@
 			Loaded="HorizontalMultitaskingControl_Loaded"
 			TabIndex="0" />
 
+		<!--  Acid Signal retro look only: CRT scan lines over the whole window (not hit-testable)  -->
+		<uc:CrtOverlay
+			x:Name="CrtOverlay"
+			Grid.RowSpan="3"
+			Grid.ColumnSpan="2"
+			Canvas.ZIndex="100"
+			x:Load="{x:Bind controls:Look.IsRetro}" />
+
 		<!--  Console Deck look only: the open tabs stacked on a left rail  -->
 		<uc:DeckTabRail
 			x:Name="DeckTabRail"

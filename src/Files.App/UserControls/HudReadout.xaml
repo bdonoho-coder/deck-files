@@ -30,7 +30,29 @@
 		Orientation="Horizontal"
 		Spacing="14">
 
-		<!--  Scan line: a short accent segment sweeps along a dim scale line  -->
+		<!--  Retro: three chevrons, like the circuit-trace markers on cyberpunk HUD panels  -->
+		<StackPanel
+			VerticalAlignment="Center"
+			Orientation="Horizontal"
+			Spacing="-2"
+			Visibility="{StaticResource LookRetro}">
+			<FontIcon
+				FontSize="8"
+				Foreground="{ThemeResource LookAccent}"
+				Glyph="&#xE76B;" />
+			<FontIcon
+				FontSize="8"
+				Foreground="{ThemeResource LookAccent}"
+				Glyph="&#xE76B;"
+				Opacity="0.7" />
+			<FontIcon
+				FontSize="8"
+				Foreground="{ThemeResource LookAccent}"
+				Glyph="&#xE76B;"
+				Opacity="0.4" />
+		</StackPanel>
+
+		<!--  Scan line: a short accent segment sweeps along a dim scale line (dashed, with a node square, in the retro look)  -->
 		<Grid
 			Width="120"
 			Height="10"
@@ -40,7 +62,23 @@
 				Height="1"
 				VerticalAlignment="Center"
 				Fill="{ThemeResource LookAccent}"
-				Opacity="0.35" />
+				Opacity="0.35"
+				Visibility="{StaticResource LookLineSolid}" />
+			<Rectangle
+				Height="1"
+				VerticalAlignment="Center"
+				Opacity="0.6"
+				Stroke="{ThemeResource LookAccent}"
+				StrokeDashArray="2,2"
+				StrokeThickness="1"
+				Visibility="{StaticResource LookLineDashed}" />
+			<Rectangle
+				Width="5"
+				Height="5"
+				HorizontalAlignment="Right"
+				VerticalAlignment="Center"
+				Fill="{ThemeResource LookAccent}"
+				Visibility="{StaticResource LookLineDashed}" />
 			<Rectangle
 				Width="1"
 				Height="6"
@@ -75,8 +113,12 @@
 			FontSize="11"
 			FontWeight="SemiBold"
 			Foreground="{ThemeResource LookLabelForeground}"
-			Text="{x:Bind ThemeLabel}"
-			Visibility="{StaticResource LookDecor}" />
+			Text="{x:Bind ThemeLabel, Mode=OneWay}"
+			Visibility="{StaticResource LookDecor}">
+			<TextBlock.RenderTransform>
+				<TranslateTransform x:Name="GlitchShift" />
+			</TextBlock.RenderTransform>
+		</TextBlock>
 
 		<TextBlock
 			VerticalAlignment="Center"

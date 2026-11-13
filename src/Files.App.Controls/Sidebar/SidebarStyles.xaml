@@ -98,7 +98,27 @@
 								VerticalAlignment="Center"
 								Fill="{ThemeResource LookAccent}"
 								Opacity="0.25"
-								Visibility="{StaticResource LookDecor}" />
+								Visibility="{StaticResource LookLineSolid}" />
+							<!--  Retro: dashed circuit trace ending in a node square  -->
+							<Rectangle
+								Grid.Column="1"
+								Height="1"
+								Margin="10,1,8,0"
+								VerticalAlignment="Center"
+								Opacity="0.5"
+								Stroke="{ThemeResource LookAccent}"
+								StrokeDashArray="2,2"
+								StrokeThickness="1"
+								Visibility="{StaticResource LookLineDashed}" />
+							<Rectangle
+								Grid.Column="1"
+								Width="5"
+								Height="5"
+								Margin="0,1,0,0"
+								HorizontalAlignment="Right"
+								VerticalAlignment="Center"
+								Fill="{ThemeResource LookAccent}"
+								Visibility="{StaticResource LookLineDashed}" />
 						</Grid>
 
 						<!--  Focusable Visual  -->
@@ -267,7 +287,28 @@
 										Margin="10,1,0,0"
 										VerticalAlignment="Center"
 										Fill="{ThemeResource LookAccent}"
-										Opacity="0.4" />
+										Opacity="0.4"
+										Visibility="{StaticResource LookLineSolid}" />
+									<!--  Retro: dashed circuit trace ending in a node square  -->
+									<Rectangle
+										Grid.Column="1"
+										Height="1"
+										Margin="10,1,8,0"
+										VerticalAlignment="Center"
+										Opacity="0.6"
+										Stroke="{ThemeResource LookAccent}"
+										StrokeDashArray="2,2"
+										StrokeThickness="1"
+										Visibility="{StaticResource LookLineDashed}" />
+									<Rectangle
+										Grid.Column="1"
+										Width="5"
+										Height="5"
+										Margin="0,1,0,0"
+										HorizontalAlignment="Right"
+										VerticalAlignment="Center"
+										Fill="{ThemeResource LookAccent}"
+										Visibility="{StaticResource LookLineDashed}" />
 								</Grid>
 
 								<!--  Decorator  -->

@@ -32,15 +32,25 @@ namespace Files.App.Controls
 		/// <summary>Console Deck look: titled panes (NAV / DIR / INFO), key-cap toolbar, tabs stacked on a left rail.</summary>
 		public static bool IsDeck => Name == "deck";
 
+		/// <summary>Retro-cyberpunk extras (CRT scan lines, glitch readout, dashed circuit lines) for the Acid Signal theme, on top of any HUD-based look.</summary>
+		public static bool IsRetro => IsHud && ThemeName == "hud-acid";
+
 		/// <summary>Resource files merged for this look, in order (later files override earlier keys).</summary>
-		public static string[] Files => Name switch
+		public static string[] Files
 		{
-			"minimal" => ["MinimalLook"],
-			"dossier" => ["HudLook", "DossierLook"],
-			"tree" => ["HudLook", "TreeLook"],
-			"deck" => ["HudLook", "DeckLook"],
-			_ => ["HudLook"],
-		};
+			get
+			{
+				string[] files = Name switch
+				{
+					"minimal" => ["MinimalLook"],
+					"dossier" => ["HudLook", "DossierLook"],
+					"tree" => ["HudLook", "TreeLook"],
+					"deck" => ["HudLook", "DeckLook"],
+					_ => ["HudLook"],
+				};
+				return IsRetro ? [.. files, "AcidLook"] : files;
+			}
+		}
 
 		/// <summary>Caps in the HUD look, unchanged otherwise. For x:Bind.</summary>
 		public static string? Text(string? text)

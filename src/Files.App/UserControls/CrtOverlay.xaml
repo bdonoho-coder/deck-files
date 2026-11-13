@@ -1,0 +1,16 @@
+<!--  Copyright (c) Files Community. Licensed under the MIT License.  -->
+<UserControl
+	x:Class="Files.App.UserControls.CrtOverlay"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	IsHitTestVisible="False"
+	IsTabStop="False"
+	SizeChanged="CrtOverlay_SizeChanged"
+	mc:Ignorable="d">
+
+	<!--  Retro look: CRT scan lines over the whole window (one dark 1 px line every 4 px, drawn in code for the current height)  -->
+	<Canvas x:Name="Lines" Opacity="0.16" />
+
+</UserControl>

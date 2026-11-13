@@ -29,6 +29,10 @@
 	<Thickness x:Key="LookInfoTabsMargin">12</Thickness>
 	<CommandBarLabelPosition x:Key="LookToolbarLabel">Collapsed</CommandBarLabelPosition>
 	<Visibility x:Key="LookTopTab">Visible</Visibility>
+	<!--  Retro extras (AcidLook.xaml): chevrons + glitch readout, CRT scan lines, dashed circuit lines instead of solid scale lines  -->
+	<Visibility x:Key="LookRetro">Collapsed</Visibility>
+	<Visibility x:Key="LookLineSolid">Visible</Visibility>
+	<Visibility x:Key="LookLineDashed">Collapsed</Visibility>
 	<!--  Cards view: square plates; DossierLook.xaml adds the dark fill, accent stroke and tag notch  -->
 	<CornerRadius x:Key="LookCardRadius">0</CornerRadius>
 	<Visibility x:Key="LookNotch">Collapsed</Visibility>
