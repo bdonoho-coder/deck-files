@@ -32,6 +32,9 @@ namespace Files.App.Controls
 		/// <summary>Console Deck look: titled panes (NAV / DIR / INFO), key-cap toolbar, tabs stacked on a left rail.</summary>
 		public static bool IsDeck => Name == "deck";
 
+		/// <summary>Cyber Revamp look: big-icon places rail, console panes, file plates, command bar, ID card, filler graphics.</summary>
+		public static bool IsCyber => Name == "cyber";
+
 		/// <summary>Retro-cyberpunk extras (CRT scan lines, glitch readout, dashed circuit lines) for the Acid Signal theme, on top of any HUD-based look.</summary>
 		public static bool IsRetro => IsHud && ThemeName == "hud-acid";
 
@@ -46,6 +49,7 @@ namespace Files.App.Controls
 					"dossier" => ["HudLook", "DossierLook"],
 					"tree" => ["HudLook", "TreeLook"],
 					"deck" => ["HudLook", "DeckLook"],
+					"cyber" => ["HudLook", "CyberLook"],
 					_ => ["HudLook"],
 				};
 				return IsRetro ? [.. files, "AcidLook"] : files;
@@ -75,7 +79,7 @@ namespace Files.App.Controls
 						theme = line[8..].Trim().ToLowerInvariant();
 				}
 
-				if (look is not ("hud" or "minimal" or "dossier" or "tree" or "deck"))
+				if (look is not ("hud" or "minimal" or "dossier" or "tree" or "deck" or "cyber"))
 					look = theme is not null && theme.StartsWith("hud-") ? "hud" : "minimal";
 
 				return (look, theme ?? string.Empty);

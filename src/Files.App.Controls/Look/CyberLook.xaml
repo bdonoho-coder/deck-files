@@ -1,0 +1,12 @@
+<!--  Cyber Revamp look (board D): the HUD look (merged first) plus console pane headers, a big-icon places rail on the left (CyberRail), and, step by step, file plates, a command bar, an ID-card info pane and filler graphics.  -->
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+	<!--  Panes: header strip on; no rectangular outline, the open HUD-kit frame (ChamferFrame) is drawn instead  -->
+	<Visibility x:Key="LookPane">Visible</Visibility>
+	<SolidColorBrush x:Key="LookPaneStroke" Color="Transparent" />
+	<Thickness x:Key="LookPaneThickness">0</Thickness>
+	<Thickness x:Key="LookInfoPaneThickness">0</Thickness>
+	<Visibility x:Key="LookChamfer">Visible</Visibility>
+	<Thickness x:Key="LookInfoTabsMargin">12,44,12,12</Thickness>
+
+</ResourceDictionary>

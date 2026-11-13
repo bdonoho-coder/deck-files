@@ -30,6 +30,8 @@
 	<CommandBarLabelPosition x:Key="LookToolbarLabel">Collapsed</CommandBarLabelPosition>
 	<Visibility x:Key="LookTopTab">Visible</Visibility>
 	<!--  Retro extras (AcidLook.xaml): chevrons + glitch readout, CRT scan lines, dashed circuit lines instead of solid scale lines  -->
+	<Visibility x:Key="LookChamfer">Collapsed</Visibility>
+	<Thickness x:Key="LookInfoPaneThickness">1</Thickness>
 	<Visibility x:Key="LookRetro">Collapsed</Visibility>
 	<Visibility x:Key="LookLineSolid">Visible</Visibility>
 	<Visibility x:Key="LookLineDashed">Collapsed</Visibility>

@@ -138,7 +138,7 @@
 		Background="{ThemeResource App.Theme.InfoPane.BackgroundBrush}"
 		BackgroundSizing="InnerBorderEdge"
 		BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
-		BorderThickness="1"
+		BorderThickness="{StaticResource LookInfoPaneThickness}"
 		CornerRadius="{StaticResource LookCardRadius}">
 		<Grid.RowDefinitions>
 			<RowDefinition Height="Auto" />
@@ -156,6 +156,12 @@
 			Grid.ColumnSpan="2"
 			VerticalAlignment="Top"
 			Title="INFO  //  03" />
+		<!--  Cyber look: open HUD-kit frame over the pane (hidden in the other looks)  -->
+		<controls:ChamferFrame
+			Grid.Row="0"
+			Grid.RowSpan="3"
+			Grid.ColumnSpan="2"
+			Canvas.ZIndex="50" />
 
 		<!--  Panes  -->
 		<StackPanel

@@ -132,6 +132,9 @@
 				VerticalContentAlignment="Stretch"
 				Content="{x:Bind Footer, Mode=OneWay}" />
 
+			<!--  Cyber look: open HUD-kit frame over the pane (hidden in the other looks)  -->
+			<local:ChamferFrame Grid.RowSpan="4" />
+
 		</Grid>
 
 		<!--  Sizer  -->

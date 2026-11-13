@@ -148,6 +148,14 @@
 			Canvas.ZIndex="100"
 			x:Load="{x:Bind controls:Look.IsRetro}" />
 
+		<!--  Cyber look only: the main places as big icons on a left rail  -->
+		<uc:CyberRail
+			x:Name="CyberRail"
+			Grid.Row="1"
+			Grid.RowSpan="2"
+			Grid.Column="0"
+			x:Load="{x:Bind controls:Look.IsCyber}" />
+
 		<!--  Console Deck look only: the open tabs stacked on a left rail  -->
 		<uc:DeckTabRail
 			x:Name="DeckTabRail"
@@ -289,6 +297,8 @@
 							Grid.Row="1"
 							HorizontalContentAlignment="Stretch"
 							Content="{x:Bind ViewModel.SelectedTabItem.ContentFrame, Mode=OneWay}" />
+						<!--  Cyber look: open HUD-kit frame over the pane (hidden in the other looks)  -->
+						<controls:ChamferFrame Grid.RowSpan="2" />
 					</Grid>
 
 					<!--  Info Pane Splitter  -->
