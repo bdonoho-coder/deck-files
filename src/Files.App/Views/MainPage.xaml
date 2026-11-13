@@ -373,6 +373,8 @@
 			<!--  Footer  -->
 			<controls:SidebarView.Footer>
 				<StackPanel Padding="4,2,4,2" Spacing="2">
+					<!--  Cyber look filler: fixed drives as dot-matrix meters (hidden in the other looks)  -->
+					<uc:CyberMeters x:Name="CyberMeters" x:Load="{x:Bind controls:Look.IsCyber}" />
 					<Border
 						Height="1"
 						HorizontalAlignment="Stretch"

@@ -13,9 +13,16 @@ namespace Files.App.Controls
 	/// </summary>
 	public sealed partial class ChamferFrame : UserControl
 	{
-		private const double Cut = 14;   // corner cut size
-		private const double Step = 6;   // height of the 45 degree jog on the top edge
 		private const double Node = 5;   // side of the square nodes
+
+		/// <summary>Corner cut size; the step and the minimum size scale with it (14 for panes, 8 for a bar).</summary>
+		public double Cut
+		{
+			get => (double)GetValue(CutProperty);
+			set => SetValue(CutProperty, value);
+		}
+		public static readonly DependencyProperty CutProperty =
+			DependencyProperty.Register(nameof(Cut), typeof(double), typeof(ChamferFrame), new PropertyMetadata(14d));
 
 		public ChamferFrame()
 		{
@@ -26,7 +33,7 @@ namespace Files.App.Controls
 		{
 			var w = e.NewSize.Width;
 			var h = e.NewSize.Height;
-			if (w < 4 * Cut || h < 4 * Cut)
+			if (w < 3 * Cut || h < 3 * Cut)
 				return;
 
 			var outline = Outline(w, h);
@@ -36,13 +43,15 @@ namespace Files.App.Controls
 		}
 
 		// Three open strokes: top edge with a step into the upper right edge; lower right edge, bottom and lower left edge; upper left edge into the top-left cut.
-		private static string Outline(double w, double h)
+		private string Outline(double w, double h)
 		{
+			var cut = Cut;
+			var step = Math.Round(cut * 0.43);
 			var stepX = w * 0.58;
 			return string.Join(' ',
-				$"M{F(Cut)},0.5 H{F(stepX)} L{F(stepX + Step)},{F(Step + 0.5)} H{F(w - Cut)} L{F(w - 0.5)},{F(Cut)} V{F(h * 0.40)}",
-				$"M{F(w - 0.5)},{F(h * 0.58)} V{F(h - Cut)} L{F(w - Cut)},{F(h - 0.5)} H{F(Cut)} L0.5,{F(h - Cut)} V{F(h * 0.56)}",
-				$"M0.5,{F(h * 0.38)} V{F(Cut)} L{F(Cut)},0.5");
+				$"M{F(cut)},0.5 H{F(stepX)} L{F(stepX + step)},{F(step + 0.5)} H{F(w - cut)} L{F(w - 0.5)},{F(cut)} V{F(h * 0.40)}",
+				$"M{F(w - 0.5)},{F(h * 0.58)} V{F(h - cut)} L{F(w - cut)},{F(h - 0.5)} H{F(cut)} L0.5,{F(h - cut)} V{F(h * 0.56)}",
+				$"M0.5,{F(h * 0.38)} V{F(cut)} L{F(cut)},0.5");
 		}
 
 		// Square nodes where the strokes stop, plus a notch block on the top edge before the step.

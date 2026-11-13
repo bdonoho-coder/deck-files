@@ -77,6 +77,17 @@ namespace Files.App.Views.Layouts
 		}
 
 		/// <summary>
+		/// Cyber look type badge: "DIR" for folders, else the extension in caps (at most 4 letters, "FILE" when there is none). For x:Bind.
+		/// </summary>
+		public static string Badge(string? extension, bool isFolder)
+		{
+			if (isFolder)
+				return "DIR";
+			var ext = (extension ?? string.Empty).TrimStart('.');
+			return ext.Length == 0 ? "FILE" : ext[..Math.Min(4, ext.Length)].ToUpperInvariant();
+		}
+
+		/// <summary>
 		/// Row height for items in the Details View
 		/// </summary>
 		public int RowHeight

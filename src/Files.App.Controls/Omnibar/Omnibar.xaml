@@ -77,6 +77,9 @@
 							Grid.Row="0"
 							Padding="2,0" />
 
+						<!--  Cyber look: open HUD-kit frame instead of the box outline (hidden in the other looks)  -->
+						<local:ChamferFrame Grid.Row="0" Cut="8" />
+
 						<Popup
 							x:Name="PART_SuggestionsPopup"
 							Grid.Row="1"

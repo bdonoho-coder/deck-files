@@ -230,6 +230,46 @@
 				x:Name="PreviewLoadingIndicator"
 				IsIndeterminate="True"
 				Visibility="Collapsed" />
+
+			<!--  Cyber look: ID-card bracket corners around the preview (hidden in the other looks)  -->
+			<Grid
+				Grid.RowSpan="2"
+				Margin="-4"
+				IsHitTestVisible="False"
+				Visibility="{StaticResource LookChamfer}">
+				<Path
+					Width="16"
+					Height="16"
+					HorizontalAlignment="Left"
+					VerticalAlignment="Top"
+					Data="M0,16 L0,0 L16,0"
+					Stroke="{ThemeResource LookAccent}"
+					StrokeThickness="2" />
+				<Path
+					Width="16"
+					Height="16"
+					HorizontalAlignment="Right"
+					VerticalAlignment="Top"
+					Data="M0,0 L16,0 L16,16"
+					Stroke="{ThemeResource LookAccent}"
+					StrokeThickness="2" />
+				<Path
+					Width="16"
+					Height="16"
+					HorizontalAlignment="Left"
+					VerticalAlignment="Bottom"
+					Data="M0,0 L0,16 L16,16"
+					Stroke="{ThemeResource LookAccent}"
+					StrokeThickness="2" />
+				<Path
+					Width="16"
+					Height="16"
+					HorizontalAlignment="Right"
+					VerticalAlignment="Bottom"
+					Data="M16,0 L16,16 L0,16"
+					Stroke="{ThemeResource LookAccent}"
+					StrokeThickness="2" />
+			</Grid>
 		</Grid>
 
 		<ScrollViewer
@@ -240,6 +280,37 @@
 			AutomationProperties.Name="{helpers:ResourceString Name=PreviewPaneFileDetails/AutomationProperties/Name}"
 			Visibility="Visible">
 			<StackPanel Orientation="Vertical">
+				<!--  Cyber look: dashed circuit trace with a code label above the details (hidden in the other looks)  -->
+				<Grid Margin="12,4,12,8" Visibility="{StaticResource LookChamfer}">
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="Auto" />
+						<ColumnDefinition Width="*" />
+					</Grid.ColumnDefinitions>
+					<Rectangle
+						Width="5"
+						Height="5"
+						Margin="0,0,8,0"
+						VerticalAlignment="Center"
+						Fill="{ThemeResource LookAccent}" />
+					<TextBlock
+						Margin="13,0,0,0"
+						VerticalAlignment="Center"
+						CharacterSpacing="{StaticResource LookSpacing}"
+						FontFamily="{StaticResource LookFont}"
+						FontSize="10"
+						FontWeight="SemiBold"
+						Foreground="{ThemeResource LookLabelForeground}"
+						Text="ID  //  CARD" />
+					<Rectangle
+						Grid.Column="1"
+						Height="1"
+						Margin="10,1,0,0"
+						VerticalAlignment="Center"
+						Opacity="0.6"
+						Stroke="{ThemeResource LookAccent}"
+						StrokeDashArray="2,2"
+						StrokeThickness="1" />
+				</Grid>
 				<TextBlock
 					x:Name="DetailsListHeader"
 					HorizontalAlignment="Center"

@@ -6,8 +6,8 @@ namespace Files.App.Controls
 {
 	/// <summary>
 	/// Which look this build draws. Read once at start from %USERPROFILE%\Themes\current.ini, which the theme picker writes:
-	/// a "look=" key wins ("hud", "minimal", "dossier", "tree", "deck"); otherwise themes named "hud-*" get the HUD look and every
-	/// other theme gets the minimal look. The picker restarts Files when the look changes.
+	/// a "look=" key wins ("hud", "minimal", "dossier", "tree", "deck", "cyber"); otherwise every theme gets the Cyber look.
+	/// The picker restarts Files when the look changes.
 	/// </summary>
 	public static class Look
 	{
@@ -79,8 +79,9 @@ namespace Files.App.Controls
 						theme = line[8..].Trim().ToLowerInvariant();
 				}
 
+				// No explicit look (the picker's AUTO): the Cyber look for every theme, in that theme's colors.
 				if (look is not ("hud" or "minimal" or "dossier" or "tree" or "deck" or "cyber"))
-					look = theme is not null && theme.StartsWith("hud-") ? "hud" : "minimal";
+					look = "cyber";
 
 				return (look, theme ?? string.Empty);
 			}

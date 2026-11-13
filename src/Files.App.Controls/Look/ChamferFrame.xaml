@@ -12,7 +12,8 @@
 	mc:Ignorable="d">
 
 	<!--  Cyber look pane frame, like a HUD panel kit: an open outline with corner cuts, a 45 degree step on the top edge, gaps on the left and right edges that end in square nodes, a glow stroke under the line and an accent notch. The geometry is rebuilt for the pane size in code.  -->
-	<Grid>
+	<!--  A Canvas reports no size, so the drawn frame never feeds back into the pane's layout  -->
+	<Canvas>
 		<Path
 			x:Name="Glow"
 			Opacity="0.22"
@@ -25,6 +26,6 @@
 		<Path
 			x:Name="Nodes"
 			Fill="{ThemeResource LookAccent}" />
-	</Grid>
+	</Canvas>
 
 </UserControl>

@@ -37,8 +37,12 @@
 				FontFamily="{StaticResource LookFont}"
 				FontSize="11"
 				FontWeight="Bold"
-				Foreground="{ThemeResource LookTabSelectedForeground}"
-				Text="{x:Bind Title, Mode=OneWay}" />
+				Text="{x:Bind Title, Mode=OneWay}">
+				<!--  Always dark on the accent tab (AccentDark3 = the theme background); the looks change the tab text brush  -->
+				<TextBlock.Foreground>
+					<SolidColorBrush Color="{ThemeResource SystemAccentColorDark3}" />
+				</TextBlock.Foreground>
+			</TextBlock>
 		</Grid>
 
 		<TextBlock

@@ -9,4 +9,23 @@
 	<Visibility x:Key="LookChamfer">Visible</Visibility>
 	<Thickness x:Key="LookInfoTabsMargin">12,44,12,12</Thickness>
 
+	<!--  Tabs: the selected tab is a HUD-kit plate (CyberTab) with accent text, not the solid cut tab  -->
+	<Visibility x:Key="LookCyberTab">Visible</Visibility>
+	<Visibility x:Key="LookHudTab">Collapsed</Visibility>
+	<SolidColorBrush x:Key="LookTabSelectedForeground" Color="{ThemeResource SystemAccentColor}" />
+	<SolidColorBrush x:Key="LookTabSelectedIconForeground" Color="{ThemeResource SystemAccentColor}" />
+	<SolidColorBrush x:Key="LookTabSelectedCloseForeground" Color="{ThemeResource SystemAccentColor}" />
+
+	<!--  Address bar: no box outline, the open frame is drawn over it  -->
+	<SolidColorBrush x:Key="LookOmnibarBorder" Color="Transparent" />
+	<SolidColorBrush
+		x:Key="LookOmnibarBorderPointerOver"
+		Opacity="0.35"
+		Color="{ThemeResource SystemAccentColor}" />
+
+	<!--  Details view rows as plates: filled, spaced, corner cut top-left, extension badge before the name  -->
+	<SolidColorBrush x:Key="LookPlateFill" Color="{ThemeResource ControlFillColorDefault}" />
+	<Thickness x:Key="LookPlateMargin">0,0,0,4</Thickness>
+	<Visibility x:Key="LookBadge">Visible</Visibility>
+
 </ResourceDictionary>

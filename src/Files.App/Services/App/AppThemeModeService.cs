@@ -1,6 +1,7 @@
 // Copyright (c) Files Community
 // Licensed under the MIT License.
 
+using Files.App.Controls;
 using Microsoft.Extensions.Logging;
 using Microsoft.UI;
 using Microsoft.UI.Windowing;
@@ -108,6 +109,19 @@ namespace Files.App.Services
 							titleBar.ButtonHoverBackgroundColor = Color.FromArgb(51, 255, 255, 255);
 							titleBar.ButtonForegroundColor = Colors.White;
 							break;
+					}
+
+					// Cyber look: caption buttons in the theme accent, solid accent key on hover (AccentDark3 = the theme background).
+					if (Look.IsCyber)
+					{
+						var accent = (Color)Application.Current.Resources["SystemAccentColor"];
+						var dark = (Color)Application.Current.Resources["SystemAccentColorDark3"];
+						titleBar.ButtonForegroundColor = accent;
+						titleBar.ButtonInactiveForegroundColor = Color.FromArgb(128, accent.R, accent.G, accent.B);
+						titleBar.ButtonHoverBackgroundColor = accent;
+						titleBar.ButtonHoverForegroundColor = dark;
+						titleBar.ButtonPressedBackgroundColor = Color.FromArgb(200, accent.R, accent.G, accent.B);
+						titleBar.ButtonPressedForegroundColor = dark;
 					}
 				}
 

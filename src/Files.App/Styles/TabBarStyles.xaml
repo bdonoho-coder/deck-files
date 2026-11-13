@@ -1,4 +1,7 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+﻿<ResourceDictionary
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:controls="using:Files.App.Controls">
 
 	<Style x:Key="TabBarCloseButtonStyle" TargetType="Button">
 		<Setter Property="HorizontalContentAlignment" Value="Center" />
@@ -165,6 +168,12 @@
 								Stretch="Fill" />
 						</Grid>
 
+						<!--  Cyber look selected tab: HUD-kit plate (cut corner, stepped top, long right cut, outline + glow)  -->
+						<controls:CyberTab
+							x:Name="CyberTab"
+							Grid.Column="1"
+							Visibility="Collapsed" />
+
 						<Border
 							x:Name="TabSeparator"
 							Grid.Column="1"
@@ -281,6 +290,7 @@
 
 								<VisualState x:Name="Selected">
 									<VisualState.Setters>
+										<Setter Target="CyberTab.Visibility" Value="{StaticResource LookCyberTab}" />
 										<Setter Target="TabUnderline.Visibility" Value="{StaticResource LookTabUnderline}" />
 										<Setter Target="TabNode.Fill" Value="{ThemeResource LookAccent}" />
 										<Setter Target="BottomBorderLine.Visibility" Value="Collapsed" />
@@ -304,6 +314,7 @@
 
 								<VisualState x:Name="PointerOverSelected">
 									<VisualState.Setters>
+										<Setter Target="CyberTab.Visibility" Value="{StaticResource LookCyberTab}" />
 										<Setter Target="TabUnderline.Visibility" Value="{StaticResource LookTabUnderline}" />
 										<Setter Target="TabNode.Fill" Value="{ThemeResource LookAccent}" />
 										<Setter Target="BottomBorderLine.Visibility" Value="Collapsed" />
@@ -328,6 +339,7 @@
 
 								<VisualState x:Name="PressedSelected">
 									<VisualState.Setters>
+										<Setter Target="CyberTab.Visibility" Value="{StaticResource LookCyberTab}" />
 										<Setter Target="TabUnderline.Visibility" Value="{StaticResource LookTabUnderline}" />
 										<Setter Target="TabNode.Fill" Value="{ThemeResource LookAccent}" />
 										<Setter Target="BottomBorderLine.Visibility" Value="Collapsed" />

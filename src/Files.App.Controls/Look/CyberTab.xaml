@@ -1,0 +1,34 @@
+<!--  Copyright (c) Files Community. Licensed under the MIT License.  -->
+<UserControl
+	x:Class="Files.App.Controls.CyberTab"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	IsHitTestVisible="False"
+	IsTabStop="False"
+	SizeChanged="CyberTab_SizeChanged"
+	mc:Ignorable="d">
+
+	<!--  Cyber look selected tab: a HUD-kit plate with a cut top-left corner, a 45 degree step on the top edge and a long cut on the right; light accent fill, accent outline, glow, notch block. The geometry is rebuilt for the tab size in code.  -->
+	<!--  A Canvas reports no size, so the drawn shape never feeds back into the tab's layout (a Grid here caused a layout cycle)  -->
+	<Canvas>
+		<Path
+			x:Name="Glow"
+			Opacity="0.25"
+			Stroke="{ThemeResource LookAccent}"
+			StrokeThickness="4" />
+		<Path
+			x:Name="Plate"
+			Opacity="0.16"
+			Fill="{ThemeResource LookAccent}" />
+		<Path
+			x:Name="Line"
+			Stroke="{ThemeResource LookAccent}"
+			StrokeThickness="1" />
+		<Path
+			x:Name="Notch"
+			Fill="{ThemeResource LookAccent}" />
+	</Canvas>
+
+</UserControl>

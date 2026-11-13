@@ -175,7 +175,9 @@
 				TargetType="ListViewItem">
 				<Setter Property="HorizontalContentAlignment" Value="Stretch" />
 				<Setter Property="MinHeight" Value="1" />
-				<Setter Property="Margin" Value="0" />
+				<!--  Cyber look: rows as filled, spaced plates  -->
+				<Setter Property="Margin" Value="{StaticResource LookPlateMargin}" />
+				<Setter Property="Background" Value="{ThemeResource LookPlateFill}" />
 			</Style>
 		</ResourceDictionary>
 	</local:BaseGroupableLayoutPage.Resources>
@@ -986,6 +988,18 @@
 												Stretch="Uniform" />
 										</Grid>
 
+										<!--  Cyber look: top-left corner cut of the plate (a triangle in the list background color)  -->
+										<Path
+											HorizontalAlignment="Left"
+											VerticalAlignment="Top"
+											Data="M0,0 H10 L0,10 Z"
+											IsHitTestVisible="False"
+											Visibility="{StaticResource LookBadge}">
+											<Path.Fill>
+												<SolidColorBrush Color="{ThemeResource SystemAccentColorDark3}" />
+											</Path.Fill>
+										</Path>
+
 										<!--  Selection Check Box  -->
 										<CheckBox
 											x:Name="SelectionCheckbox"
@@ -1008,12 +1022,37 @@
 										VerticalAlignment="Center"
 										Canvas.ZIndex="6">
 										<Grid.ColumnDefinitions>
+											<!--  Cyber look: extension badge  -->
+											<ColumnDefinition Width="Auto" />
 											<ColumnDefinition Width="*" />
 											<ColumnDefinition Width="Auto" />
 										</Grid.ColumnDefinitions>
 
+										<!--  Cyber look: chamfered type badge (DIR, PDF, ZIP...) before the name  -->
+										<Grid
+											Margin="4,0,2,0"
+											VerticalAlignment="Center"
+											Opacity="{x:Bind Opacity, Mode=OneWay}"
+											Visibility="{StaticResource LookBadge}">
+											<Path
+												Data="M3,0 H36 V15 L33,18 H0 V3 Z"
+												Stroke="{ThemeResource LookAccent}"
+												StrokeThickness="1" />
+											<TextBlock
+												Width="36"
+												VerticalAlignment="Center"
+												CharacterSpacing="{StaticResource LookSpacing}"
+												FontFamily="{StaticResource LookFont}"
+												FontSize="8"
+												FontWeight="Bold"
+												Foreground="{ThemeResource LookAccent}"
+												Text="{x:Bind local:DetailsLayoutPage.Badge(FileExtension, IsFolder), Mode=OneWay}"
+												TextAlignment="Center" />
+										</Grid>
+
 										<TextBlock
 											x:Name="ItemName"
+											Grid.Column="1"
 											Padding="6,0,0,0"
 											VerticalAlignment="Center"
 											Opacity="{x:Bind Opacity, Mode=OneWay}"
@@ -1022,6 +1061,7 @@
 
 										<TextBox
 											x:Name="ItemNameTextBox"
+											Grid.Column="1"
 											MaxWidth="{Binding Path=MaxWidthForRenameTextbox, ElementName=PageRoot, Mode=OneWay}"
 											HorizontalAlignment="Left"
 											VerticalAlignment="Center"
