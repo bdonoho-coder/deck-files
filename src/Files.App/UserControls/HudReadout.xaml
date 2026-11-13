@@ -1,0 +1,101 @@
+﻿<!--  Copyright (c) Files Community. Licensed under the MIT License.  -->
+<UserControl
+	x:Class="Files.App.UserControls.HudReadout"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	IsHitTestVisible="False"
+	mc:Ignorable="d">
+
+	<UserControl.Resources>
+		<Storyboard x:Name="ScanStoryboard" RepeatBehavior="Forever">
+			<DoubleAnimation
+				AutoReverse="True"
+				Storyboard.TargetName="ScanShift"
+				Storyboard.TargetProperty="X"
+				From="0"
+				To="102"
+				Duration="0:0:2.6">
+				<DoubleAnimation.EasingFunction>
+					<SineEase EasingMode="EaseInOut" />
+				</DoubleAnimation.EasingFunction>
+			</DoubleAnimation>
+		</Storyboard>
+	</UserControl.Resources>
+
+	<!--  Theme readout in the title bar: scan line, theme id, system drive use, clock. The HUD look shows all of it; the minimal look only the clock.  -->
+	<StackPanel
+		VerticalAlignment="Center"
+		Orientation="Horizontal"
+		Spacing="14">
+
+		<!--  Scan line: a short accent segment sweeps along a dim scale line  -->
+		<Grid
+			Width="120"
+			Height="10"
+			VerticalAlignment="Center"
+			Visibility="{StaticResource LookDecor}">
+			<Rectangle
+				Height="1"
+				VerticalAlignment="Center"
+				Fill="{ThemeResource LookAccent}"
+				Opacity="0.35" />
+			<Rectangle
+				Width="1"
+				Height="6"
+				HorizontalAlignment="Left"
+				VerticalAlignment="Center"
+				Fill="{ThemeResource LookAccent}"
+				Opacity="0.6" />
+			<Rectangle
+				Width="1"
+				Height="6"
+				HorizontalAlignment="Right"
+				VerticalAlignment="Center"
+				Fill="{ThemeResource LookAccent}"
+				Opacity="0.6" />
+			<Rectangle
+				x:Name="ScanSegment"
+				Width="18"
+				Height="3"
+				HorizontalAlignment="Left"
+				VerticalAlignment="Center"
+				Fill="{ThemeResource LookAccent}">
+				<Rectangle.RenderTransform>
+					<TranslateTransform x:Name="ScanShift" />
+				</Rectangle.RenderTransform>
+			</Rectangle>
+		</Grid>
+
+		<TextBlock
+			VerticalAlignment="Center"
+			CharacterSpacing="{StaticResource LookSpacing}"
+			FontFamily="{StaticResource LookFont}"
+			FontSize="11"
+			FontWeight="SemiBold"
+			Foreground="{ThemeResource LookLabelForeground}"
+			Text="{x:Bind ThemeLabel}"
+			Visibility="{StaticResource LookDecor}" />
+
+		<TextBlock
+			VerticalAlignment="Center"
+			CharacterSpacing="{StaticResource LookSpacing}"
+			FontFamily="{StaticResource LookFont}"
+			FontSize="11"
+			FontWeight="SemiBold"
+			Foreground="{ThemeResource LookLabelForeground}"
+			Text="{x:Bind DriveLabel, Mode=OneWay}"
+			Visibility="{StaticResource LookDecor}" />
+
+		<TextBlock
+			VerticalAlignment="Center"
+			CharacterSpacing="{StaticResource LookSpacing}"
+			FontFamily="{StaticResource LookFont}"
+			FontSize="12"
+			FontWeight="SemiBold"
+			Foreground="{ThemeResource LookLabelForeground}"
+			Text="{x:Bind Clock, Mode=OneWay}" />
+	</StackPanel>
+
+</UserControl>

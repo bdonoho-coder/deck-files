@@ -263,6 +263,13 @@
 						Fill="Transparent"
 						Loaded="DragAreaRectangle_Loaded" />
 
+					<!--  Theme readout (clock, theme, drive, scan line); not hit-testable, so the drag area under it still moves the window  -->
+					<uc:HudReadout
+						Grid.Column="1"
+						Margin="0,0,16,0"
+						HorizontalAlignment="Right"
+						VerticalAlignment="Center" />
+
 				</Grid>
 			</TabView.TabStripFooter>
 

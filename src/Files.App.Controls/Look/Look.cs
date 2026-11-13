@@ -11,7 +11,15 @@ namespace Files.App.Controls
 	/// </summary>
 	public static class Look
 	{
-		public static readonly string Name = Read();
+		public static readonly string Name;
+
+		/// <summary>The picker's theme id, e.g. "hud-acid" or "nord" (empty when unknown).</summary>
+		public static readonly string ThemeName;
+
+		static Look()
+		{
+			(Name, ThemeName) = Read();
+		}
 
 		public static bool IsHud => Name == "hud";
 
@@ -23,7 +31,7 @@ namespace Files.App.Controls
 		public static string Label(string name, int count)
 			=> IsHud ? $"{name.ToUpperInvariant()}  //  {count:00}" : name;
 
-		private static string Read()
+		private static (string Look, string Theme) Read()
 		{
 			try
 			{
@@ -38,14 +46,14 @@ namespace Files.App.Controls
 						theme = line[8..].Trim().ToLowerInvariant();
 				}
 
-				if (look is "hud" or "minimal")
-					return look;
+				if (look is not ("hud" or "minimal"))
+					look = theme is not null && theme.StartsWith("hud-") ? "hud" : "minimal";
 
-				return theme is not null && theme.StartsWith("hud-") ? "hud" : "minimal";
+				return (look, theme ?? string.Empty);
 			}
 			catch (Exception)
 			{
-				return "minimal";
+				return ("minimal", string.Empty);
 			}
 		}
 	}
