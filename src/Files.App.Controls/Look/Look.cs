@@ -5,7 +5,7 @@ using System.IO;
 namespace Files.App.Controls
 {
 	/// <summary>
-	/// Which look this build draws. Read once at start from %USERPROFILE%\Themes\current.ini, which the theme picker writes:
+	/// Which look this build draws. Read once at start from the picker folder's current.ini (folder from %LOCALAPPDATA%\Deck\root.txt, else %USERPROFILE%\Themes), which the theme picker writes:
 	/// a "look=" key wins ("hud", "minimal", "dossier", "tree", "deck", "cyber"); otherwise every theme gets the Cyber look.
 	/// The picker restarts Files when the look changes.
 	/// </summary>
@@ -90,7 +90,13 @@ namespace Files.App.Controls
 		{
 			try
 			{
-				var file = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Themes", "current.ini");
+				// The picker writes its folder to %LOCALAPPDATA%\Deck\root.txt at start; older setups keep %USERPROFILE%\Themes.
+				var local = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+				var rootFile = Path.Combine(local, "Deck", "root.txt");
+				var root = File.Exists(rootFile) ? File.ReadAllText(rootFile).Trim() : string.Empty;
+				if (root.Length == 0 || !Directory.Exists(root))
+					root = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Themes");
+				var file = Path.Combine(root, "current.ini");
 				string? look = null, theme = null;
 				foreach (var raw in File.ReadAllLines(file))
 				{
