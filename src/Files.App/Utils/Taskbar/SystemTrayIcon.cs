@@ -296,7 +296,7 @@ namespace Files.App.Utils.Taskbar
 			{
 				_lastLaunchDate = DateTime.Now;
 
-				_ = Launcher.LaunchUriAsync(new Uri("files-dev:"));
+				_ = Launcher.LaunchUriAsync(new Uri("deck:"));
 			}
 			else
 				MainWindow.Instance.Activate();
