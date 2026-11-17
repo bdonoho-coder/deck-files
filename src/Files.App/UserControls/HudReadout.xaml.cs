@@ -8,7 +8,7 @@ using System.IO;
 namespace Files.App.UserControls
 {
 	/// <summary>
-	/// Title bar readout: theme id, system drive use and a clock, plus the scan line animation in the HUD look.
+	/// Title bar readout: theme id, system drive use and a clock.
 	/// The retro look (Acid Signal) adds a short glitch flicker on the theme id every few seconds.
 	/// </summary>
 	public sealed partial class HudReadout : UserControl
@@ -35,14 +35,11 @@ namespace Files.App.UserControls
 			{
 				_timer.Tick += Timer_Tick;
 				_timer.Start();
-				if (Look.IsHud)
-					ScanStoryboard.Begin();
 			};
 			Unloaded += (_, _) =>
 			{
 				_timer.Stop();
 				_timer.Tick -= Timer_Tick;
-				ScanStoryboard.Stop();
 			};
 		}
 

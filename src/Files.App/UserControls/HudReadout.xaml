@@ -8,23 +8,7 @@
 	IsHitTestVisible="False"
 	mc:Ignorable="d">
 
-	<UserControl.Resources>
-		<Storyboard x:Name="ScanStoryboard" RepeatBehavior="Forever">
-			<DoubleAnimation
-				AutoReverse="True"
-				Storyboard.TargetName="ScanShift"
-				Storyboard.TargetProperty="X"
-				From="0"
-				To="102"
-				Duration="0:0:2.6">
-				<DoubleAnimation.EasingFunction>
-					<SineEase EasingMode="EaseInOut" />
-				</DoubleAnimation.EasingFunction>
-			</DoubleAnimation>
-		</Storyboard>
-	</UserControl.Resources>
-
-	<!--  Theme readout in the title bar: scan line, theme id, system drive use, clock. The HUD look shows all of it; the minimal look only the clock.  -->
+	<!--  Theme readout in the title bar: theme id, system drive use, clock. The HUD look shows all of it; the minimal look only the clock.  -->
 	<StackPanel
 		VerticalAlignment="Center"
 		Orientation="Horizontal"
@@ -51,60 +35,6 @@
 				Glyph="&#xE76B;"
 				Opacity="0.4" />
 		</StackPanel>
-
-		<!--  Scan line: a short accent segment sweeps along a dim scale line (dashed, with a node square, in the retro look)  -->
-		<Grid
-			Width="120"
-			Height="10"
-			VerticalAlignment="Center"
-			Visibility="{StaticResource LookDecor}">
-			<Rectangle
-				Height="1"
-				VerticalAlignment="Center"
-				Fill="{ThemeResource LookAccent}"
-				Opacity="0.35"
-				Visibility="{StaticResource LookLineSolid}" />
-			<Rectangle
-				Height="1"
-				VerticalAlignment="Center"
-				Opacity="0.6"
-				Stroke="{ThemeResource LookAccent}"
-				StrokeDashArray="2,2"
-				StrokeThickness="1"
-				Visibility="{StaticResource LookLineDashed}" />
-			<Rectangle
-				Width="5"
-				Height="5"
-				HorizontalAlignment="Right"
-				VerticalAlignment="Center"
-				Fill="{ThemeResource LookAccent}"
-				Visibility="{StaticResource LookLineDashed}" />
-			<Rectangle
-				Width="1"
-				Height="6"
-				HorizontalAlignment="Left"
-				VerticalAlignment="Center"
-				Fill="{ThemeResource LookAccent}"
-				Opacity="0.6" />
-			<Rectangle
-				Width="1"
-				Height="6"
-				HorizontalAlignment="Right"
-				VerticalAlignment="Center"
-				Fill="{ThemeResource LookAccent}"
-				Opacity="0.6" />
-			<Rectangle
-				x:Name="ScanSegment"
-				Width="18"
-				Height="3"
-				HorizontalAlignment="Left"
-				VerticalAlignment="Center"
-				Fill="{ThemeResource LookAccent}">
-				<Rectangle.RenderTransform>
-					<TranslateTransform x:Name="ScanShift" />
-				</Rectangle.RenderTransform>
-			</Rectangle>
-		</Grid>
 
 		<TextBlock
 			VerticalAlignment="Center"
